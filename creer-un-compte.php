@@ -96,10 +96,10 @@
     $mail = $_POST['mail'];
     $pass = $_POST['pass'];
     $conf = $_POST['confpass'];
-    $user = '[A-Za-z]*@gmail.com';
+    $user =strstr($mail,'@gmail.com');
     
     if ($_POST['btn']) {
-        if (($mail != $user) || isset($mail)) {
+        if ($mail != $user) {
             echo '<script> alert("L’email n’est pas au bon format");</script>';
         }
         if (empty($mail)) {
