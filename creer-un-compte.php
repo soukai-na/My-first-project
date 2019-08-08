@@ -29,7 +29,34 @@
         <div id='n1' style='margin-left:100;'><?php echo $sql['texte1']; ?></div>
         </br>
         <div id=comptee style='margin-left:112; height:365;'>
-            <p>
+            <p><?php
+    $mail = $_POST['mail'];
+    $pass = $_POST['pass'];
+    $conf = $_POST['confpass'];
+    $user =strstr($mail,'@gmail.com');
+    
+    if ($_POST['btn']) {
+        if (($mail != $user) || isset($mail)) {
+            echo '<script> alert("L’email n’est pas au bon format");</script>';
+        }
+        if (empty($mail)) {
+
+            echo '<script> alert("Entrez votre e-mail");</script>';
+        }
+        if (empty($pass)) {
+
+            echo '<script> alert("Entrez votre mot de passe");</script>';
+        }
+        if (empty($conf) || isset($pass)) {
+
+            echo '<script> alert("confirmez votre mot de passe");</script>';
+        }
+        if ($pass != $conf) {
+
+            echo '<script> alert("Les mots de passe ne sont pas identiques");</script>';
+        }
+    }
+    ?>
                 <form action='' method='POST'>
                     <font style='font-size:15; font-family:sans-serif; color:white;'>Inscrivez-vous maintenant et trouvez un emploi rapidement</font>
             </p>
@@ -91,33 +118,5 @@
 </body>
 
 </html>
-<form action='' method='POST'>
-    <?php
-    $mail = $_POST['mail'];
-    $pass = $_POST['pass'];
-    $conf = $_POST['confpass'];
-    $user =strstr($mail,'@gmail.com');
     
-    if ($_POST['btn']) {
-        if (($mail != $user) || isset($mail)) {
-            echo '<script> alert("L’email n’est pas au bon format");</script>';
-        }
-        if (empty($mail)) {
 
-            echo '<script> alert("Entrez votre e-mail");</script>';
-        }
-        if (empty($pass)) {
-
-            echo '<script> alert("Entrez votre mot de passe");</script>';
-        }
-        if (empty($conf) || isset($pass)) {
-
-            echo '<script> alert("confirmez votre mot de passe");</script>';
-        }
-        if ($pass != $conf) {
-
-            echo '<script> alert("Les mots de passe ne sont pas identiques");</script>';
-        }
-    }
-    ?>
-</form>
