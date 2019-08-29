@@ -1,12 +1,14 @@
+<?php
+session_start();
+?>
 <html>
-
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
     <title>-Automobile.com</title>
     <link rel='stylesheet' href='style-css/style.css' />
 </head>
-<?php session_start();  ?>
+
 
 <body>
     <header>
@@ -31,25 +33,26 @@
         if (!$conn) {
             echo 'Error:' . mysqli_connect_error();
         }
-        $mail = $_POST['email'];
-        $passwd = $_POST['password'];
-        var_dump($email);
-        $resultt = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
-        $sqll = mysqli_fetch_array($result);
+        
+
 
         ?>
+
         <div class=icon>
             <i class='material-icons'>account_circle</i>
-            <p style='font-size:37;margin-bottom: 0px;'><?php echo $_sql['prenom'] . " " . $_session['nom']; ?></p>
+            <p style='font-size:37;margin-bottom: 0px;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></p>
+            <?php
+            var_dump($_SESSION['jour']);
+            echo $_SESSION['jour'];  ?>
             </br>
             <p class=fiche>
                 </br>
-                ><a href='mon-compte.php' >Mon COmpte</a></br>
-                    ><a href=mes-annonces.php >Suivre mes annonces sauvegardées</a></br>
-                    ><a href=mes-candidateurs.php >Suivre mes candidatures</a></br>
-                    ><a href= >Gérer mes CV</a></br>
-                    ><a href=mon-compte.php >Gérer mes lettres de motivation</a></br>
-                    ><a href=donnees-perso.php >Modifier mes informations personnelles</a></br>
+                ><a href='mon-compte.php'>Mon Compte</a></br>
+                ><a href=mes-annonces.php>Suivre mes annonces sauvegardées</a></br>
+                ><a href=mes-candidatures.php>Suivre mes candidatures</a></br>
+                ><a href=mon-compte.php>Gérer mes CV</a></br>
+                ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
+                ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
                 <span><a href=" . $href . ">Se déconnecter</a> </span>
             </p>
         </div>
@@ -76,7 +79,7 @@
                 <b>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
-                <b>Mes lettres de motivation</b><a href=lettre-de-motivation.php ><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
+                <b>Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
                 </br></br>
                 <b>Mes annonces sélectionnées</b><input type='submit' id='annonce-svg' name='submit' value='VOIR MES ANNONCES SAUVEGARDÉES' />
             </div>

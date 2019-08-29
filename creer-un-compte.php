@@ -28,12 +28,55 @@
     <div id='back'></br>
         <div id='n1' style='margin-left:100;'><?php echo $sql['texte1']; ?></div>
         </br>
+<<<<<<< HEAD
         
             
             <?php
             $margin='120px';
             $link='http://localhost/autorecrute/autorecrute.php';
             include('scriptes/creer.php'); ?>
+=======
+        <div id=comptee style='margin-left:112; height:365;'>
+            <p><?php
+    $mail = $_POST['mail'];
+    $pass = $_POST['pass'];
+    $conf = $_POST['confpass'];
+    $user =strstr($mail,'@gmail.com');
+    
+    if ($_POST['btn']) {
+        if (($mail != $user) || isset($mail)) {
+            echo '<script> alert("L’email n’est pas au bon format");</script>';
+        }
+        if (empty($mail)) {
+
+            echo '<script> alert("Entrez votre e-mail");</script>';
+        }
+        if (empty($pass)) {
+
+            echo '<script> alert("Entrez votre mot de passe");</script>';
+        }
+        if (empty($conf) || isset($pass)) {
+
+            echo '<script> alert("confirmez votre mot de passe");</script>';
+        }
+        if ($pass != $conf) {
+
+            echo '<script> alert("Les mots de passe ne sont pas identiques");</script>';
+        }
+    }
+    ?>
+                <form action='' method='POST'>
+                    <font style='font-size:15; font-family:sans-serif; color:white;'>Inscrivez-vous maintenant et trouvez un emploi rapidement</font>
+            </p>
+            <hr><a href=https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77reu8cupyym2y&state=fc68342e58e6e0cfc1b7b33399480ef2&redirect_uri=http%3A%2F%2Fwww.autorecrute.com%2F&scope=r_basicprofile%20r_emailaddress> <img src=images/linkedin.png /></a></br></br>
+            <input type='text' name='mail' placeholder='Adresse e-mail' /></br>
+            <p style='font-size:10; color:white;'>Votre mot de passe doit faire au minimum 12 caractères et inclure 3 types de caractères entre majuscules, minuscules, chiffres et caractères spéciaux</p>
+            <input type='password' name='pass' placeholder='Mot de passe' /></br></br>
+            <input type='password' name='confpass' placeholder='Confirmation du mot de passe' /></br>
+            <p style='display:flex;'><input type='submit' name='btn' value="S'inscrire" style='width:40%;' />
+                <span style='margin-left:50;'>Déjà membre ?</br><a href='http://localhost/autorecrute/autorecrute.php'>Connectez-vous</a></span></p>
+            </form>
+>>>>>>> 8deb335862a61de3a4b44f0ab06e9fb537ed84c6
         </div>
     </div>
     </div>
@@ -85,4 +128,8 @@
 </body>
 
 </html>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 8deb335862a61de3a4b44f0ab06e9fb537ed84c6
 

@@ -78,13 +78,13 @@
                 <a href=mes-candidatures.php><button id=b4>Mes candidatures</button></a>
                 <a href=donnees-perso.php><button id=b1>Données perso</button></a>
             </div>
-            <form method='POST' action='update-candidat.php'>
+            <form method='POST' action='' >
                 <div class=formulaire style='display:block;'>
                     Prénom<input type='text' name='prenom' value='<?php echo $result["prenom"]; ?>' style='margin-left:86px;'></br>
                     Nom<input type='text' name='nom' value='<?php echo $result["prenom"]; ?>' style='margin-left:103px;'></br>
                     <div style='display:flex;'><span>Date de naissance</span>
-                        <select name='jour' value='<?php echo $result["jour"] ?>'>
-                            <option value='jour'>Jour</option>
+                        <select name='jour'>
+                            <option value='jour'><?php echo $result["jour"] ?></option>
                             <option value='1'>1</option>
                             <option value='2'>2</option>
                             <option value='3'>3</option>
@@ -117,8 +117,8 @@
                             <option value='30'>30</option>
                             <option value='31'>31</option>
                         </select>
-                        <select name='mois' value='<?php echo $result["mois"] ?>'>
-                            <option value='mois'>mois</option>
+                        <select name='mois' value=''>
+                            <option value='mois'><?php echo $result["mois"] ?></option>
                             <option value='01'>01</option>
                             <option value='02'>02</option>
                             <option value='03'>03</option>
@@ -132,8 +132,8 @@
                             <option value='11'>11</option>
                             <option value='12'>12</option>
                         </select>
-                        <select name='annee' style='margin-left:5;' value='<?php echo $result["annee"] ?>'>
-                            <option value='annee'>annee</option>
+                        <select name='annee' style='margin-left:5;' value=''>
+                            <option value='annee'><?php echo $result["annee"] ?></option>
                             <option value='2019'>2019</option>
                             <option value='2018'>2018</option>
                             <option value='2017'>2017</option>
@@ -288,8 +288,8 @@
                     Code postal<input type='text' name='postal' value='<?php echo $result["postal"]; ?>' style='margin-left:65;'></br>
                     Téléphone 1<input type='text' name='tele1' value='<?php echo $result["telephone1"]; ?>' style='margin-left:60;'></br>
                     Téléphone 2<input type='text' name='tele2' value='<?php echo $result["telephone2"]; ?>' style='margin-left:60;'></br>
-                    Fonction souhaitée<select name='metierre' style='margin-left: 22px;' value='<?php echo $result["metierrecherche"]; ?>'>
-                        <option>Choisissez un métier</option>
+                    Fonction souhaitée<select name='metierre' style='margin-left: 22px;'>
+                        <option value=''><?php echo $result["metierrecherche"]; ?></option>
                         <option>Acheteur</option>
                         <option>Adjoint chef d’atelier</option>
                         <option>Adjoint chef de centre</option>
@@ -317,8 +317,8 @@
                         <option>Chef d’unité mécanique</option>
                         <option>Chef d’atelier</option>
                     </select></br>
-                    Secteur d'activité <select name='activite' style='margin-left: 28px;' value='<?php echo $result["activite"]; ?>'>
-                        <option value='choisissez une activité'>choisissez une activité</option>
+                    Secteur d'activité <select name='activite' style='margin-left: 28px;' value=''>
+                        <option value='choisissez une activité'><?php echo $result["activite"]; ?></option>
                         <option value='autre'>Autre</option>
                         <option value='Cadre en administration / col.terr.'>Cadre en administration / col.terr.</option>
                         <option value='Cadre en entreprise'>Cadre en entreprise</option>

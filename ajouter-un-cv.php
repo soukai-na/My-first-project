@@ -1,12 +1,13 @@
+<?php
+session_start();
+?>
 <html>
-
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
     <title>-Automobile.com</title>
     <link rel='stylesheet' href='style-css/style.css' />
 </head>
-<?php session_start();  ?>
 
 <body>
     <header>
@@ -31,16 +32,12 @@
         if (!$conn) {
             echo 'Error:' . mysqli_connect_error();
         }
-        $mail = $_POST['email'];
-        $passwd = $_POST['password'];
-        var_dump($email);
-        $resultt = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
-        $sqll = mysqli_fetch_array($result);
+       
 
         ?>
         <div class=icon>
             <i class='material-icons'>account_circle</i>
-            <p style='font-size:37;margin-bottom: 0px;'><?php echo $_sql['prenom'] . " " . $_session['nom']; ?></p>
+            <p style='font-size:37;margin-bottom: 0px;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></p>
             </br>
             <p class=fiche>
                 </br>

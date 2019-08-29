@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <html>
 
 <head>
@@ -6,7 +7,7 @@
     <title>-Automobile.com</title>
     <link rel='stylesheet' href='style-css/style.css' />
 </head>
-<?php session_start();  ?>
+
 
 <body>
     <header>
@@ -33,23 +34,22 @@
         }
         $mail = $_POST['email'];
         $passwd = $_POST['password'];
-        var_dump($email);
         $resultt = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
         $sqll = mysqli_fetch_array($result);
 
         ?>
         <div class=icon>
             <i class='material-icons'>account_circle</i>
-            <p style='font-size:37;margin-bottom: 0px;'><?php echo $_sql['prenom'] . " " . $_session['nom']; ?></p>
+            <p style='font-size:37;margin-bottom: 0px;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></p>
             </br>
             <p class=fiche>
                 </br>
-                ><a href='mon-compte.php'>Mon Compte</a></br>
-                ><a href=>Suivre mes annonces sauvegardées</a></br>
-                ><a href=>Suivre mes candidatures</a></br>
-                ><a href=>Gérer mes CV</a></br>
-                ><a href=>Gérer mes lettres de motivation</a></br>
-                ><a href=>Modifier mes informations personnelles</a></br>
+                ><a href='mon-compte.php'>Mon COmpte</a></br>
+                ><a href=mes-annonces.php>Suivre mes annonces sauvegardées</a></br>
+                ><a href=mes-candidatures.php>Suivre mes candidatures</a></br>
+                ><a href=mon-compte.php>Gérer mes CV</a></br>
+                ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
+                ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
                 <span><a href=" . $href . ">Se déconnecter</a> </span>
             </p>
         </div>

@@ -20,8 +20,8 @@
         <div id='n1' style='margin-left:184px; margin-right: 178px; '><?php echo $sql['texte1']; ?></div>
         </br>
 
-        <input type='hidden' name='mail' value='<?php echo $POST['mail']; ?>' />
-        <input type='hidden' name='passwd' value='<?php echo $POST['passwd']; ?>' />
+        <input type='hidden' name='email' value='<?php echo $POST['mail']; ?>' />
+        <input type='hidden' name='password' value='<?php echo $POST['passwd']; ?>' />
         <?php
         $href='autorecrute.php';
         include('scriptes/cnx.php'); ?>
