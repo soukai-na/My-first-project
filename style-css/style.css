@@ -22,6 +22,7 @@ body{
 	display:flex;
   padding:10;
   height:50%;
+  margin-top: -15px;
 }
 
 
@@ -323,13 +324,13 @@ header{
 }
 #comptee{
   background-color:black;
-  opacity:0.7;
   padding:0;
   justify-content:center;
   text-align:center;
   width:310px;
   height:300px;
   border:black 2px solid;
+  opacity:0.8;
 }
 #comptee p{
   margin:10;
@@ -1371,11 +1372,11 @@ a:active{
     background:#2e353f;
     border:1px gray solid;
     width:330;
-    height:338;
     justify-content:center;
     text-align:center;
     padding:10;
     opacity:0.8;
+    box-shadow: 0 0 75px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .tabb input[type=text]{
   padding:10;
@@ -1430,10 +1431,6 @@ a:active{
     display:flex;
     justify-content:center;
 }
-
-
-
-
 
 
 
@@ -2078,7 +2075,7 @@ footer{
   border-radius: 4px;
   cursor: pointer;
   color:white;
-  width:110%;
+  width:170px;
   text-align:center;
   justify-content:center;
 }
@@ -2137,4 +2134,256 @@ footer #pied1{
 .conf-insc{
   margin-left: 850px;
   margin-top: 10px;
+}
+#form{
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  width: 830px;
+  padding-top: 1px;
+
+}
+#check input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+#check input[type='checkbox']{
+  background-color: #2196F3;
+}
+.btn-form{
+  background:darkred;
+   color:white;
+    font-weight:900;
+    margin:10; 
+    border:1px darkred solid;
+    margin-left: 320px;
+     width: 235px;
+      height: 45px;
+}
+.elem-form{
+  padding:10px;
+   border:1px black solid;
+    margin-left:100px;
+     width:570;
+      padding-left:50;
+}
+.elem-form b{
+  color: red;
+  font-family: sans-serif;
+   margin-bottom:20; 
+}
+.elem-form select{
+  border: 1px solid #ccc; 
+  background: white;    
+  width: 260px; 
+}
+.elem-form input[type=text]{
+ border-radius: 4px;
+    border: 1px solid #ccc;
+       background: white;
+       height:33px; 
+          width: 260px;
+}
+.elem-form input[type=password]{
+  border-radius: 4px;
+  border: 1px solid #ccc;
+     background: white;
+     height:33px; 
+        width: 260px;
+}
+.elem-form input[type=number]{
+  border-radius: 4px;
+  border: 1px solid #ccc;
+     background: white;
+     height:33px; 
+        width: 260px;
+}
+.elem-form input[type=checkbox]{
+  cursor: pointer;
+  height: 25;
+  width: 30; 
+  border-radius: 4px;  
+  border: 1px solid #ccc;
+  margin-bottom:10;
+  margin-left: 143px;
+}
+#back .icon .material-icons{
+  margin-top:14px;
+  font-size:100px; 
+  color:#e6333c;
+}
+.fiche{
+  text-align: initial;
+  margin-left: 18px;
+  background-color: #e6333c;
+  opacity: 0.7;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  padding-right: 17px;
+}
+.fiche span{
+  color: black !important;
+  margin-left: 80px;
+}
+.fiche a{
+  text-decoration: none;
+  color:black;
+}
+.fiche a:hover{
+  text-decoration: underline;
+  color:#cc7378;
+}
+.icon .material-icons{
+  margin-top:14px;
+  font-size:100px;
+}
+.icon{
+  text-align:center; 
+  margin-right: -34px;
+}
+.icon .material-icons{
+  margin-top:14px;
+  font-size:100px; 
+  color:#e6333c;
+}
+.icon button{
+  background:#e6333c;
+  color:white;
+  border-radius: 2px;
+  border:1px #e6333c solid;
+  margin-top: 34px;
+  width: 144px;
+  height: 40px;
+  font-size: 15px;
+    font-weight: 900;
+}
+.buttons button{
+  background-color: rgb(119, 125, 131);
+  height: 60px;
+  margin-right: -5px;
+  border: 1px solid #56616d;
+  cursor:pointer;
+}
+.buttons  #b1{
+  background:#dddddd;
+}
+#cvv{
+  padding:10;
+  display:block;
+}
+#cvv input{
+  float:right;
+  background:#e6333c;
+  border:1px solid #e6333c;
+  height: 30px;
+}
+#cvv p{
+  border:1px solid yellow;
+  padding:10;
+  background:#fcf8e3;
+}
+#annonce-svg{
+  margin-top: 5px;
+  margin-bottom:5px;
+}
+.first button{
+  background:#e6333c;
+  border:1px solid #e6333c;
+  height: 60px;
+  margin-top:35px;
+}
+.first{
+  background:#dddddd;
+  padding:20;
+  height: 240px;
+    width: 225px;
+    text-align:center;
+    border:1px solid #5d5e65;
+}
+.second{
+  background:#dddddd;
+  padding:20;
+  height: 240px;
+    width: 225px;
+    text-align:center;
+    border:1px solid #5d5e65;
+}
+.second button{
+  background:#e6333c;
+  border:1px solid #e6333c;
+  height: 60px;
+  margin-top:35px;
+} 
+.first b{
+  font-size:30px;
+  margin-bottom:10px;
+}
+.second b{
+  font-size:30px;
+  margin-bottom:10px;
+}
+.svg tr td{
+  text-align:center;
+  border:1px solid #dddddd;
+}
+.svg tr{
+  display: inline-flex;
+}
+.svg{
+  text-align: -webkit-center;
+  margin-top:100px;
+}
+.formulaire input[type=text]{
+  width: 230px;
+  height: 30px;
+  margin-top: 10;
+  margin-bottom: 10;
+}
+.formulaire select{
+  width: 230px;
+  height: 30px;
+  margin-top: 10;
+  margin-bottom: 10;
+  background:white;
+}
+.formulaire{
+  padding:10;
+}
+.modifier{
+  background:#e6333c;
+  border:1px solid #e6333c;
+  margin-left: 190px;
+  height: 30px;
+  font-weight: 900;
+  width: 110px;
+  color: white;
+}
+.formulaire p{
+  margin-left: 165px;
+}
+.inserer-cv{
+  border:1px black solid;
+  width: 1050px;
+    margin-left: 345px;
+    padding: 14px;
+}
+.inserer-cv input[type=text]{
+height:34px;
+margin-left:74px;
+margin-bottom: 15px;
+}
+.inserer-cv span{
+  margin-left:295;
+}
+.inserer-cv select{
+  background: white;
+  color: #8f8681;
+}
+.lettre{
+  border:1px solid #8f8681;    padding: 10;
+  width: 500px;
+  height: 260px;
+}
+.lettre input[type=text]{
+  width:500;
+  width: 270px;
+  margin-left:10px;
+  height: 35px;
 }

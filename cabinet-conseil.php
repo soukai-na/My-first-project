@@ -15,7 +15,7 @@
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
     <title>Cabinet de conseil en recrutement automobile-Nos experts sont à votre service-Autorecrute.com</title>
     <link rel='stylesheet' href='style-css/style.css' />
 </head>
@@ -62,16 +62,18 @@
         </div>
     </div>
     <div id='face2' style='margin-left:12;'>
+    <form method=POST  onsubmit="return validate()" name='form'>
         <div class='tabb' style='margin-top:60; margin-bottom:25;'>
-          <font color='white' size='5' face='sans-serif'><b>Se faire recontacter</b></font></br>
-          <input type='text' placeholder='Société*' style='margin-bottom:8;'/></br>
-          <input type='text' placeholder='Nom*' style='margin-bottom:8;'/></br>
-          <input type='text' placeholder='Prénom*' style='margin-bottom:8;'/></br>
-          <input type='text' placeholder='E-mail*' style='margin-bottom:8;'/></br>
-          <input type='text' placeholder='Téléphone*' style='margin-bottom:8;'/></br>
-          <input type='checkbox' style='margin-bottom:15px;' ><font color='white'>Recevoir les offres partenaires de l'argus</font></br>
+          <font color='white' size='5' face='sans-serif'><b>Se faire recontacter</b></font></br></br>
+          <input type='text' placeholder='Société*' style='margin-bottom:8;' required/></br>
+          <input type='text' placeholder='Nom*' style='margin-bottom:8;' required/></br>
+          <input type='text' placeholder='Prénom*' style='margin-bottom:8;' required/></br>
+          <input type='text' name=mail placeholder='E-mail*' style='margin-bottom:8;' required/></br>
+          <input type='text' placeholder='Téléphone*' style='margin-bottom:8;' required/></br>
+          <input type='checkbox' style='margin-bottom:15px;' required ><font color='white'>Recevoir les offres partenaires de l'argus</font></br>
           <input type='submit' value='Nous contacter' /></br>
         </div>
+        </form>
         <?php
         $req="SELECT * FROM temoignages";
         $result=mysqli_query($conn,$req);
@@ -89,7 +91,20 @@
     </div>
   </div>
   <div style='margin-top:50;' >
+  <a href='http://localhost/autorecrute/cabinet-conseil.php'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;'/></a></br>
       <?php include('scriptes/footer.php');?>
   </div>
 </body>
 </html>
+<script>
+  function validate() {
+        var email = document.forms["form"]["mail"].value;
+        var exp = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+
+        
+        if (!exp.test(email)) {
+            alert("L’email n’est pas au bon format");
+            return false;
+        }
+    }
+  </script>

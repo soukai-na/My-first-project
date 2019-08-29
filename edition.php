@@ -11,7 +11,7 @@
   }
   ?>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
   <title>Salon de l'emploi automobile:le seul forum de recrutement 100% automobile-Automobile.com</title>
   <link rel='stylesheet' href='style-css/style.css' />
 </head>
@@ -69,7 +69,7 @@
       <?php echo $sql['texte']; ?>
       </div>
       <div style='margin-left:165px;'>
-      <?php echo $sql['image']; ?>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6105371776616!2d2.3190416514923466!3d48.86563660804835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fcd61ae0a01%3A0x18030de10e25ab2c!2sPlace+de+la+Concorde!5e0!3m2!1sen!2sma!4v1566565469189!5m2!1sen!2sma" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
       </div>
     </div>
       <div id=presse>
@@ -78,6 +78,7 @@
   </div>
 
   </br></br>
+  <a href='http://localhost/autorecrute/edition.php'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;'/></a></br>
   <?php include('scriptes/footer.php'); ?>
 </body>
 

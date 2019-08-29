@@ -1,54 +1,54 @@
+<?php
+if($_POST['btn']){
+    $servername = "localhost";
+    $username = 'root';
+    $password = 'P@ssw0rd';
+    $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
+    if (!$conn) {
+        echo 'Error:' . mysqli_connect_error();
+    }
+
+$email = $_POST['mail'];
+$passwd = $_POST['pass'];
+
+$req = mysqli_query($conn, 'SELECT email FROM formulaire');
+$sql=mysqli_fetch_assoc($req);
+
+
+if ($sql['email'] == $email) {
+    echo "<script>alert('Adresse email déjà utilisé');</script>";
+    echo include('creer-un-compte.php');
+}else{
+    $email = $_POST['mail'];
+    $passwd = $_POST['pass'];
+    $lien = 'bd.php'; 
+    echo "
+    
 <html>
 
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
+    <link rel='shortcut icon' type='image/x-icon' href='images/icon.png' />
     <title>Inscription</title>
     <link rel='stylesheet' href='style-css/style.css' />
+
 </head>
 
 <body>
-    <header>
-        <?php include('scriptes/menu.php'); ?>
-        <?php include('scriptes/recherche.php'); ?>
-    </header>
-    <?php
-    $paysErr = 'Sélectionnez un pays';
-    $activiteErr = 'Choisissez une activité';
-    $metierErr = 'Choissisez un métier';
-    $button = $_POST['button'];
-   
-     
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $annee = $_POST['annee'];
-        $mois = $_POST['mois'];
-        $jour = $_POST['jour'];
-        $pays = $_POST['pays'];
-        $adr = $_POST['adr'];
-        $ville = $_POST['ville'];
-        $tele1 = $_POST['tele1'];
-        $postal = $_POST['postal'];
-        $tele2 = $_POST['tele2'];
-        $mobilite = $_POST['mobilite'];
-        $activite = $_POST['activite'];
-        $metierac = $_POST['metierac'];
-        $metierre = $_POST['metierre'];
-        $disp = $_POST['disp'];
-        $condition = $_POST['condition'];
+    <header>";
 
-        $lien='http://localhost/autorecrute/bd.php';
-     
-    ?>
+         include('scriptes/menu.php');
+         include('scriptes/recherche.php');
+    
+         echo "
+         </header>
+    
     <div id=sous>
-        <div style='margin-top: 50px; margin-left: 415px;'><a href=http://localhost/autorecrute/autorecrute.php>Acceuil </a>> Inscription</div> </br> </div> <form method='POST' action='<?php echo $lien; ?>'>
-                <div style='margin:auto; border:1px black solid; width:1000; padding:10;'>
+        <div style='margin-top: 50px; margin-left: 415px;'><a href=http://localhost/autorecrute/autorecrute.php>Acceuil </a>> Inscription</div> </br> </div> <form method='POST' action='".$lien."'>
+                <div style='margin:auto; border:1px tomato solid; width:1000; padding:10; box-shadow: 0 0 20px 0 rgba(62, 46, 46, 0.94), 0 5px 5px 0 rgba(121, 106, 106, 0.34);'>
                     <b style='color:red;'>Informations personnelles</b>
                     <div style='display:flex; padding-top:10;'>
-                        <div class="nom-naiss">
+                        <div class='nom-naiss'>
                             <div> Nom<font color=red>*</font><input type='text' name='nom' style=';margin-left:85; width:300; height:30;' /></div></br>
-                            <?php
-
-                            ?>
                             <div style='margin-right:140;'> Date de naissance<font color=red>*</font>
                                 <select name='annee' style='margin-left:5;'>
                                     <option value='annee'>Année</option>
@@ -193,7 +193,7 @@
                                     <option value='31'>31</option>
                                 </select></div></br>
                         </div>
-                        <div class="pre-pays">
+                        <div class='pre-pays'>
                             <div> Prénom<font color=red>*</font><input type='text' name='prenom' style=';margin-left:68; width:300; height:30;' /></div></br>
                             <div> Pays de résidence<font color=red>*</font>
                                 <select name='pays' style='margin-left:5;  width:300;'>
@@ -262,7 +262,7 @@
                         </p>
                         <p>
                             Code postal<font color=red>*</font> <input type='text' name='postal' style=';margin-left:35; width:300; height:30;' /></br></br>
-                            Téléphone 2 <input type='text' name='tele2' style=';margin-left:29; width:300; height:30;' />
+                            Téléphone 2 <input type='text' name='tele2' style=';margin-left:41; width:300; height:30;' />
                         </p>
                     </div>
                     <hr>
@@ -272,7 +272,9 @@
                     <input type='radio' name='mobilite' value='Nationale' />Nationale
                     <input type='radio' name='mobilite' value='Continentale' />Continentale
                     <input type='radio' name='mobilite' value='Globale' />Globale
-                    <div class="trois" style='display:flex; padding-top:15;'>
+                    <input type='hidden' name='email' value='".$email."' />
+                    <input type='hidden' name='passwd' value='".$passwd."' />
+                    <div class='trois' style='display:flex; padding-top:15;'>
                         <div>
                             Votre activité<font color=red>*</font>
                             <select name='activite' style='margin-left:38;  width:300; height:30; margin-right:145;'>
@@ -389,8 +391,11 @@
 
                 <div class='conf-insc'><input type='submit' name='button' value='Confirmer mon inscription' /></div></br>
                 </form>
-                <?php include('scriptes/footer.php'); ?>
-
+                "; 
+                include('scriptes/footer.php');
+echo "
 </body>
 
 </html>
+ ";} }
+?>

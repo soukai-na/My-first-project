@@ -1,15 +1,6 @@
 <html>
 
 <head>
-    <?php
-    $servername = "localhost";
-    $username = 'root';
-    $password = 'P@ssw0rd';
-    $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
-    if (!$conn) {
-        echo 'Error:' . mysqli_connect_error();
-    }
-    ?>
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
     <title> Emploi automobile-Offres d'emploi automobile, stage, alternance-Autorecrute.com</title>
     <link rel='stylesheet' href='style-css/style.css' />
@@ -26,15 +17,15 @@
     $sql = mysqli_fetch_array($result);
     ?>
     <div id='back'></br>
-        <div id='n1' style='margin-left:100;'><?php echo $sql['texte1']; ?></div>
+        <div id='n1' style='margin-left:184px; margin-right: 178px; '><?php echo $sql['texte1']; ?></div>
         </br>
-        
-            
-            <?php
-            $margin='120px';
-            $link='http://localhost/autorecrute/autorecrute.php';
-            include('scriptes/creer.php'); ?>
-        </div>
+
+        <input type='hidden' name='mail' value='<?php echo $POST['mail']; ?>' />
+        <input type='hidden' name='passwd' value='<?php echo $POST['passwd']; ?>' />
+        <?php
+        $href='autorecrute.php';
+        include('scriptes/cnx.php'); ?>
+
     </div>
     </div>
     <?php
@@ -80,9 +71,8 @@
     </div>
     </div>
     <p id='dern'>Autorecrute.com, le site spécialiste du recrutement automobile. CDI, CDD, Intérim et stage du secteur automobile.</p>
-    <a href='http://localhost/autorecrute/creer-un-compte.php'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;'/></a></br>
+    <a href='http://localhost/autorecrute/autorecrute.php'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;' /></a></br>
     <?php include('scriptes/footer.php'); ?>
 </body>
 
 </html>
-

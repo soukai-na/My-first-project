@@ -25,26 +25,29 @@
     $result = mysqli_query($conn, $req);
     $sql = mysqli_fetch_array($result);
     ?>
-    <div id='back'></br>
+    <div id='back' style='margin-top:-15px;'></br>
         <div id='n1' style='margin-left:100;'><?php echo $sql['texte1']; ?></div>
         </br>
+
         <div id=comptee style=margin-left:112;>
-            <p>
-                <font color=white face=arial size=6>Mon compte</font>
-            </p>
-            <hr><a href=https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77reu8cupyym2y&state=fc68342e58e6e0cfc1b7b33399480ef2&redirect_uri=http%3A%2F%2Fwww.autorecrute.com%2F&scope=r_basicprofile%20r_emailaddress> <img src=images/linkedin.png /></a></br></br>
-            <input type=text placeholder=Adresse-e-mail /></br></br>
-            <span><input type=password id=passwd name=passwd placeholder=Mot-de-passe /><a href='' onclick="mdp('passwd')"><img src=images/eye.png /></a></span></br>
-            <p id=mtp>
-                <font size=1px face=arial>>Mot de passe oublié?</font>
-            </p></br>
-            <div style='display:flex; width:300px; margin:auto; height:40px;'><input type=submit value='Se connecter' />
-                <hr>
-                <p><a href=http://localhost/autorecrute/creer-un-compte.php>
-                        <font size=2>Créer un compte</font>
-                    </a></p>
-            </div>
+            <form method='POST' action='connexion.php' onsubmit="return validate()" name='myform'>
+                <p>
+                    <font color=white face=arial size=6>Mon compte</font>
+                </p>
+                <hr><a href=https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77reu8cupyym2y&state=fc68342e58e6e0cfc1b7b33399480ef2&redirect_uri=http%3A%2F%2Fwww.autorecrute.com%2F&scope=r_basicprofile%20r_emailaddress> <img src=images/linkedin.png /></a></br></br>
+                <input type=text id=mail  name=mail placeholder=Adresse-e-mail required /></br></br>
+                <span><input type=password id=passwd name=passwd placeholder=Mot-de-passe required /><img src=images/eye.png onclick="myFunction()" style='cursor:pointer;'/></span></br>
+                <input type='hidden' name='nom' value='<?php echo $_POST['nom']; ?>' />
+                <p id=mtp onclick="myfunction()" style="cursor:pointer; margin-top:15px;">
+                    <font size=1px face=arial>>Mot de passe oublié?</font>
+                </p></br>
+                <div style='display:flex; width:300px; margin:auto; height:40px;'><input type=submit value='Se connecter' name='connect' />
+                    <hr>
+                    <p><a href=http://localhost/autorecrute/creer-un-compte.php> <font size=2>Créer un compte</font>
+                        </a></p>
+            </form>
         </div>
+    </div>
     </div>
     <?php
     $req = "SELECT * FROM pays";
@@ -89,7 +92,43 @@
     </div>
     </div>
     <p id='dern'>Autorecrute.com, le site spécialiste du recrutement automobile. CDI, CDD, Intérim et stage du secteur automobile.</p>
+    <a href=><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;' /></a></br>
     <?php include('scriptes/footer.php'); ?>
 </body>
 
 </html>
+<script>
+    function myfunction() {
+        var pass = prompt('entrez votre email', 'user@gmail.com');
+        if (pass != null) {
+            alert('veuillez visiter votre boite email! ');
+        } else {
+            alert('Veuillez entrer votre email pour récupérer votre mot de passe');
+        }
+    }
+
+    function validate() {
+        var email = document.forms["myform"]["mail"].value;
+        var passwd = document.forms["myform"]["passwd"].value;
+        var exp = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+        if (!exp.test(email)) {
+            alert("L’email n’est pas au bon format");
+            return false;
+        }
+
+        if (passwd.length <= 12) {
+            alert("votre mot de passe est incorrecte");
+            return false;
+        }
+
+    }
+    function myFunction() {
+  var x = document.getElementById("passwd");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+

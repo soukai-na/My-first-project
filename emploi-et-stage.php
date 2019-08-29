@@ -10,7 +10,7 @@
           }
   ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link rel="shortcut icon" type="image/x-icon" href="icon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
   <title>Les offres d'emploi dans l'automobile-Autorecrute.com</title>
   <link rel='stylesheet' href='style-css/style.css' />
 </head>
@@ -34,8 +34,9 @@
       <font  color='#555555' size=5px face=arial><?php echo$sql['titre1'];?></font>
       <?php echo$sql['texte1'];?>
       <div style=display:flex;>
-           <?php echo$sql['titre2'];?>
+           <?php echo$sql['titre2'];?><div style=' margin-left:130px; margin:8px; font-size:14px;' ><font color=red  face=arial >694 offres trouvées</font></div>
       </div>
+      
       <div id=total>
            <?php echo$sql['texte2'];?>
       </div>
@@ -48,7 +49,19 @@
        <?php echo $sql['tableaux']; ?>
     </div>
     <div id="face2" style="margin-left:12;">
-        <?php include('scriptes/compte.php'); ?>
+        <?php 
+        if($_POST['btn']){
+          $margin='1px';
+          $link='http://localhost/autorecrute/emploi-et-stage.php';
+           include('scriptes/creer.php');
+        }else if($_POST['connecter']){
+          $href='http://localhost/autorecrute/emploi-et-stage.php';
+          include('scriptes/cnx.php');
+        }else{
+          include('scriptes/compte.php');
+        }
+        
+        ?>
         </br>
         <?php
             $req="SELECT * FROM image";
@@ -79,6 +92,8 @@
     </table>
   </div>
   </br>
+  <a href='http://localhost/autorecrute/emploi-et-stage.php'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;'/></a></br>
   <?php include('scriptes/footer.php');?>
 </body>
 </html>
+
