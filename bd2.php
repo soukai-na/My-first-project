@@ -27,9 +27,9 @@
             $postal = $_POST['postal'];
             $ville = $_POST['ville'];
             $telephone = $_POST['telephone'];
-            $_session['civilite'] =$civilite = $_POST['civilite'];
-            $_session['nom2'] =$nom2 = $_POST['nom2'];
-            $_session['prenom'] =$prenom = $_POST['prenom'];
+            $civilite = $_POST['civilite'];
+            $nom2 = $_POST['nom2'];
+            $prenom = $_POST['prenom'];
             $fonction = $_POST['fonction'];
             $mail = $_POST['mail'];
             $mtp = $_POST['mtp'];

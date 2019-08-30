@@ -2379,7 +2379,7 @@ margin-bottom: 15px;
 .lettre{
   border:1px solid #8f8681;    padding: 10;
   width: 500px;
-  height: 260px;
+  height: 500px;
 }
 .lettre input[type=text]{
   width:500;
@@ -2407,4 +2407,23 @@ span input[type=submit]{
     font-weight: 900;
     color: white;
     margin-left: 840px;
+}
+.btn-sup{
+  float: right;
+  background: #e6333c;
+  border: 1px solid #e6333c;
+  height: 30px;
+  font-weight: 900;
+  color: white;
+  margin-top: 35px;
+    margin-right: -122px;
+    margin-left: 11px;
+}
+.lettre textarea{
+  width: 500px;
+  height: 420px;
+  border: 2px solid darkred;
+  margin: 0px;
+  padding: 10;
+  margin-top: 10px;
 }

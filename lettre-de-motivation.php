@@ -66,7 +66,7 @@
             <div class=lettre>
                 Objet<input type='text' name='objet'></br>
                 lettre de motivation</br>
-                <iframe></iframe>
+                <textarea placeholder="lettre de motivation"></textarea>
             </div>
             </br>
             <input type=submit value='INSÉRER MA LETTRE' style='background:firebrick; color:white; font-weight:900;border: 1px solid firebrick;width: 185px;height: 45px;margin-left: 175px'>

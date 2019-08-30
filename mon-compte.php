@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
@@ -9,6 +10,7 @@
 
 
 <body>
+
     <header>
         <?php include('scriptes/menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
@@ -31,7 +33,7 @@
         if (!$conn) {
             echo 'Error:' . mysqli_connect_error();
         }
-        
+
 
 
         ?>
@@ -39,6 +41,7 @@
         <div class=icon>
             <i class='material-icons'>account_circle</i>
             <p style='font-size:37;margin-bottom: 0px;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></p>
+
             </br>
             <p class=fiche>
                 </br>
@@ -48,7 +51,7 @@
                 ><a href=mon-compte.php>Gérer mes CV</a></br>
                 ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
-                <span><a href=deconnexion.php >Se déconnecter</a> </span>
+                <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
         </div>
 
@@ -57,10 +60,21 @@
     <div id='sous'>
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> >Mon compte</div>
     </div>
+    <?php
+    if ($_POST['delete']) {
+        $req = "DELETE * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+        $bd = mysqli_query($conn, $req);
+        if ($bd) {
+            echo 'deleted';
+        } else {
+            echo mysqli_error($conn);
+        }
+    }
+    ?>
     <div id='face'>
 
         </br>
-        <div id='face1' style='border: 3px black solid;width: 553px;height: 370px;'>
+        <div id='face1' style='border: 3px black solid;width: 553px;'>
             <div class=buttons>
                 <a href=mon-compte.php><button id=b1>Mon profil Autorecrute</button></a>
                 <a href=mes-annonces.php><button id=b2>Mes annonces sauvegardées</button></a>
@@ -73,6 +87,30 @@
                 <p>Vous n'avez toujours pas ajouté de CV à votre compte Autorecrute. Saviez-vous qu'un candidat avec un CV a potentiellement 100 fois plus de chance de ce faire recruter. Alors n'hésitez pas : </p>
                 <b>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
+                <?php
+                $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+                $sql = mysqli_query($conn, $req);
+                $result = mysqli_fetch_array($sql);
+                if ($sql) {
+                    ?>
+                    <span style="display:flex;">
+                        <span>
+                            <i class='material-icons' style='font-size:70px;'>insert_drive_file</i>
+                        </span>
+                        <span style='margin-top:20; margin-right:19px;'>
+                            <?php
+                                echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
+                                    "</br>Disponibilité : " . $_SESSION['disponiblite'];
+                                ?>
+                        </span>
+
+                        <input type='submit' value='Modifier' style='margin-left: 0px;'>
+
+
+                        <form method='POST' action='mon-compte.php'><button class='btn-sup' name='delete'>Suspendre</button></form>
+
+                    </span>
+                <?php } ?>
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
                 <b>Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
                 </br></br>
