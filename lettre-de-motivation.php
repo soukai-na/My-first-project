@@ -34,7 +34,7 @@
         }
         $mail = $_POST['email'];
         $passwd = $_POST['password'];
-        
+
         $resultt = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
         $sqll = mysqli_fetch_array($result);
 
@@ -51,7 +51,7 @@
                 ><a href=mon-compte.php>Gérer mes CV</a></br>
                 ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
-                <span><a href=deconnexion.php >Se déconnecter</a> </span>
+                <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
         </div>
 
@@ -61,16 +61,18 @@
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
     <div id=face>
-        <div id=face1>
-            <p style='color:brown; font-size:20;'>Insérer une lettre de motivation</p>
-            <div class=lettre>
-                Objet<input type='text' name='objet'></br>
-                lettre de motivation</br>
-                <textarea placeholder="lettre de motivation"></textarea>
+        <form method='POST' action='lettre-bd.php'>
+            <div id=face1>
+                <p style='color:brown; font-size:20;'>Insérer une lettre de motivation</p>
+                <div class=lettre>
+                    Objet<input type='text' name='objet'></br>
+                    lettre de motivation</br>
+                    <textarea name='motivation' placeholder="lettre de motivation..."></textarea>
+                </div>
+                </br>
+                <input type=submit value='INSÉRER MA LETTRE' style='background:firebrick; color:white; font-weight:900;border: 1px solid firebrick;width: 185px;height: 45px;margin-left: 175px'>
             </div>
-            </br>
-            <input type=submit value='INSÉRER MA LETTRE' style='background:firebrick; color:white; font-weight:900;border: 1px solid firebrick;width: 185px;height: 45px;margin-left: 175px'>
-        </div>
+        </form>
         <div id='face2'>
             <div class='first'>
                 <b>Mettez vous en avant !</b>
