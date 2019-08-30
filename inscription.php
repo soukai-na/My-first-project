@@ -385,7 +385,7 @@ if ($sql['email'] == $email) {
                     <input type='checkbox' name='condition' style='margin-left:300;' />J'ai lu et j'accepte <a href='https://www.autorecrute.com/mentions-legales' style='color:#428bca; text-decoration:none;'><b>les conditions d'utilisation du site Autorecrute</b></a>
                     <font color=red>*</font>
                     </br></br>
-                    <input type='checkbox' name='offre' style='margin-left:165;' />Je souhaite recevoir occasionnellement par email les offres d'emploi en rapport avec mon secteur d'activité ?
+                    <input type='checkbox' name='offre' style='margin-left:165;' checked=checked/>Je souhaite recevoir occasionnellement par email les offres d'emploi en rapport avec mon secteur d'activité ?
 
                 </div>
 

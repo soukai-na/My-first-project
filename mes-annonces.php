@@ -50,7 +50,7 @@
                 ><a href=mon-compte.php>Gérer mes CV</a></br>
                 ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
-                <span><a href=" . $href . ">Se déconnecter</a> </span>
+                <span><a href=deconnexion.php >Se déconnecter</a> </span>
             </p>
         </div>
 

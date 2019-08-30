@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 <html>
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -41,9 +39,6 @@ session_start();
         <div class=icon>
             <i class='material-icons'>account_circle</i>
             <p style='font-size:37;margin-bottom: 0px;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?></p>
-            <?php
-            var_dump($_SESSION['jour']);
-            echo $_SESSION['jour'];  ?>
             </br>
             <p class=fiche>
                 </br>
@@ -53,7 +48,7 @@ session_start();
                 ><a href=mon-compte.php>Gérer mes CV</a></br>
                 ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
-                <span><a href=" . $href . ">Se déconnecter</a> </span>
+                <span><a href=deconnexion.php >Se déconnecter</a> </span>
             </p>
         </div>
 

@@ -48,7 +48,7 @@
                 ><a href=mon-compte.php>Gérer mes CV</a></br>
                 ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
-                <span><a href=" . $href . ">Se déconnecter</a> </span>
+                <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
         </div>
 
@@ -66,7 +66,7 @@
         if (!$conn) {
             echo 'Error:' . mysqli_connect_error();
         }
-        $req = "SELECT * FROM formulaire";
+        $req = "SELECT * FROM formulaire WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
         $sql = mysqli_query($conn, $req);
         $result = mysqli_fetch_array($sql);
         ?>
@@ -81,206 +81,580 @@
             <form method='POST' action='update-candidat.php'>
                 <div class=formulaire style='display:block;'>
                     Prénom<input type='text' name='prenom' value='<?php echo $result["prenom"]; ?>' style='margin-left:86px;'></br>
-                    Nom<input type='text' name='nom' value='<?php echo $result["prenom"]; ?>' style='margin-left:103px;'></br>
+                    Nom<input type='text' name='nom' value='<?php echo $result["nom"]; ?>' style='margin-left:103px;'></br>
                     <div style='display:flex;'><span>Date de naissance</span>
                         <select name='jour' value='<?php echo $result["jour"] ?>'>
                             <option value='jour'>Jour</option>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                            <option value='4'>4</option>
-                            <option value='5'>5</option>
-                            <option value='6'>6</option>
-                            <option value='7'>7</option>
-                            <option value='8'>8</option>
-                            <option value='9'>9</option>
-                            <option value='10'>10</option>
-                            <option value='11'>11</option>
-                            <option value='12'>12</option>
-                            <option value='13'>13</option>
-                            <option value='14'>14</option>
-                            <option value='15'>15</option>
-                            <option value='16'>16</option>
-                            <option value='17'>17</option>
-                            <option value='18'>18</option>
-                            <option value='19'>19</option>
-                            <option value='20'>20</option>
-                            <option value='21'>21</option>
-                            <option value='22'>22</option>
-                            <option value='23'>23</option>
-                            <option value='24'>24</option>
-                            <option value='25'>25</option>
-                            <option value='26'>26</option>
-                            <option value='27'>27</option>
-                            <option value='28'>28</option>
-                            <option value='29'>29</option>
-                            <option value='30'>30</option>
-                            <option value='31'>31</option>
+                            <option <?php if ('1' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>1</option>
+                            <option <?php if ('2' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>2</option>
+                            <option <?php if ('3' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>3</option>
+                            <option <?php if ('4' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>4</option>
+                            <option <?php if ('5' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>5</option>
+                            <option <?php if ('6' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>6</option>
+                            <option <?php if ('7' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>7</option>
+                            <option <?php if ('8' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>8</option>
+                            <option <?php if ('9' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>9</option>
+                            <option <?php if ('10' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>10</option>
+                            <option <?php if ('11' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>11</option>
+                            <option <?php if ('12' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>12</option>
+                            <option <?php if ('13' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>13</option>
+                            <option <?php if ('14' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>14</option>
+                            <option <?php if ('15' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>15</option>
+                            <option <?php if ('16' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>16</option>
+                            <option <?php if ('17' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>17</option>
+                            <option <?php if ('18' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>18</option>
+                            <option <?php if ('19' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>19</option>
+                            <option <?php if ('20' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>20</option>
+                            <option <?php if ('21' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>21</option>
+                            <option <?php if ('22' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>22</option>
+                            <option <?php if ('23' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>23</option>
+                            <option <?php if ('24' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>24</option>
+                            <option <?php if ('25' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>25</option>
+                            <option <?php if ('26' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>26</option>
+                            <option <?php if ('27' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>27</option>
+                            <option <?php if ('28' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>28</option>
+                            <option <?php if ('29' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>29</option>
+                            <option <?php if ('30' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>30</option>
+                            <option <?php if ('31' == $result["jour"]) {
+                                        echo 'selected';
+                                    } ?>>31</option>
                         </select>
                         <select name='mois' value='<?php echo $result["mois"] ?>'>
                             <option value='mois'>mois</option>
-                            <option value='01'>01</option>
-                            <option value='02'>02</option>
-                            <option value='03'>03</option>
-                            <option value='04'>04</option>
-                            <option value='05'>05</option>
-                            <option value='06'>06</option>
-                            <option value='07'>07</option>
-                            <option value='08'>08</option>
-                            <option value='09'>09</option>
-                            <option value='10'>10</option>
-                            <option value='11'>11</option>
-                            <option value='12'>12</option>
+                            <option <?php if ('01' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>01</option>
+                            <option <?php if ('02' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>02</option>
+                            <option <?php if ('03' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>03</option>
+                            <option <?php if ('04' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>04</option>
+                            <option <?php if ('05' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>05</option>
+                            <option <?php if ('06' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>06</option>
+                            <option <?php if ('07' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>07</option>
+                            <option <?php if ('08' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>08</option>
+                            <option <?php if ('09' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>09</option>
+                            <option <?php if ('10' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>10</option>
+                            <option <?php if ('11' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>11</option>
+                            <option <?php if ('12' == $result["mois"]) {
+                                        echo 'selected';
+                                    } ?>>12</option>
                         </select>
                         <select name='annee' style='margin-left:5;' value='<?php echo $result["annee"] ?>'>
-                            <option value='annee'>annee</option>
-                            <option value='2019'>2019</option>
-                            <option value='2018'>2018</option>
-                            <option value='2017'>2017</option>
-                            <option value='2016'>2016</option>
-                            <option value='2015'>2015</option>
-                            <option value='2014'>2014</option>
-                            <option value='2013'>2013</option>
-                            <option value='2012'>2012</option>
-                            <option value='2011'>2011</option>
-                            <option value='2010'>2010</option>
-                            <option value='2009'>2009</option>
-                            <option value='2008'>2008</option>
-                            <option value='2007'>2007</option>
-                            <option value='2006'>2006</option>
-                            <option value='2005'>2005</option>
-                            <option value='2004'>2004</option>
-                            <option value='2003'>2003</option>
-                            <option value='2002'>2002</option>
-                            <option value='2001'>2001</option>
-                            <option value='2000'>2000</option>
-                            <option value='1999'>1999</option>
-                            <option value='1998'>1998</option>
-                            <option value='1997'>1997</option>
-                            <option value='1996'>1996</option>
-                            <option value='1995'>1995</option>
-                            <option value='1994'>1994</option>
-                            <option value='1993'>1993</option>
-                            <option value='1992'>1992</option>
-                            <option value='1991'>1991</option>
-                            <option value='1990'>1990</option>
-                            <option value='1989'>1989</option>
-                            <option value='1988'>1988</option>
-                            <option value='1987'>1987</option>
-                            <option value='1986'>1986</option>
-                            <option value='1985'>1985</option>
-                            <option value='1984'>1984</option>
-                            <option value='1983'>1983</option>
-                            <option value='1982'>1982</option>
-                            <option value='1981'>1981</option>
-                            <option value='1980'>1980</option>
-                            <option value='1979'>1979</option>
-                            <option value='1978'>1978</option>
-                            <option value='1977'>1977</option>
-                            <option value='1976'>1976</option>
-                            <option value='1975'>1975</option>
-                            <option value='1974'>1974</option>
-                            <option value='1973'>1973</option>
-                            <option value='1972'>1972</option>
-                            <option value='1971'>1971</option>
-                            <option value='1970'>1970</option>
-                            <option value='1969'>1969</option>
-                            <option value='1968'>1968</option>
-                            <option value='1967'>1967</option>
-                            <option value='1966'>1966</option>
-                            <option value='1965'>1965</option>
-                            <option value='1964'>1964</option>
-                            <option value='1963'>1963</option>
-                            <option value='1962'>1962</option>
-                            <option value='1961'>1961</option>
-                            <option value='1960'>1960</option>
-                            <option value='1959'>1959</option>
-                            <option value='1958'>1958</option>
-                            <option value='1957'>1957</option>
-                            <option value='1956'>1956</option>
-                            <option value='1955'>1955</option>
-                            <option value='1954'>1954</option>
-                            <option value='1953'>1953</option>
-                            <option value='1952'>1952</option>
-                            <option value='1951'>1951</option>
-                            <option value='1950'>1950</option>
-                            <option value='1949'>1949</option>
-                            <option value='1948'>1948</option>
-                            <option value='1947'>1947</option>
-                            <option value='1946'>1946</option>
-                            <option value='1945'>1945</option>
-                            <option value='1944'>1944</option>
-                            <option value='1943'>1943</option>
-                            <option value='1942'>1942</option>
-                            <option value='1941'>1941</option>
-                            <option value='1940'>1940</option>
-                            <option value='1939'>1939</option>
-                            <option value='1938'>1938</option>
-                            <option value='1937'>1937</option>
-                            <option value='1936'>1936</option>
-                            <option value='1935'>1935</option>
-                            <option value='1934'>1934</option>
-                            <option value='1933'>1933</option>
-                            <option value='1932'>1932</option>
-                            <option value='1931'>1931</option>
-                            <option value='1930'>1930</option>
+                            <option <?php if ('' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>annee</option>
+                            <option <?php if ('2019' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2019</option>
+                            <option <?php if ('2018' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2018</option>
+                            <option <?php if ('2017' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2017</option>
+                            <option <?php if ('2016' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2016</option>
+                            <option <?php if ('2015' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2015</option>
+                            <option <?php if ('2014' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2014</option>
+                            <option <?php if ('2013' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2013</option>
+                            <option <?php if ('2012' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2012</option>
+                            <option <?php if ('2011' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2011</option>
+                            <option <?php if ('2010' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2010</option>
+                            <option <?php if ('2009' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2009</option>
+                            <option <?php if ('2008' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2008</option>
+                            <option <?php if ('2007' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2007</option>
+                            <option <?php if ('2006' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2006</option>
+                            <option <?php if ('2005' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2005</option>
+                            <option <?php if ('2004' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2004</option>
+                            <option <?php if ('2003' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2003</option>
+                            <option <?php if ('2002' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2002</option>
+                            <option <?php if ('2001' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2001</option>
+                            <option <?php if ('2000' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>2000</option>
+                            <option <?php if ('1999' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1999</option>
+                            <option <?php if ('1998' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1998</option>
+                            <option <?php if ('1997' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1997</option>
+                            <option <?php if ('1996' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1996</option>
+                            <option <?php if ('1995' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1995</option>
+                            <option <?php if ('1994' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1994</option>
+                            <option <?php if ('1993' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1993</option>
+                            <option <?php if ('1992' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1992</option>
+                            <option <?php if ('1991' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1991</option>
+                            <option <?php if ('1990' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1990</option>
+                            <option <?php if ('1989' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1989</option>
+                            <option <?php if ('1988' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1988</option>
+                            <option <?php if ('1987' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1987</option>
+                            <option <?php if ('1986' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1986</option>
+                            <option <?php if ('1985' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1985</option>
+                            <option <?php if ('1984' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1984</option>
+                            <option <?php if ('1983' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1983</option>
+                            <option <?php if ('1982' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1982</option>
+                            <option <?php if ('1981' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1981</option>
+                            <option <?php if ('1980' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1980</option>
+                            <option <?php if ('1979' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1979</option>
+                            <option <?php if ('1978' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1978</option>
+                            <option <?php if ('1977' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1977</option>
+                            <option <?php if ('1976' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1976</option>
+                            <option <?php if ('1975' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1975</option>
+                            <option <?php if ('1974' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1974</option>
+                            <option <?php if ('1973' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1973</option>
+                            <option <?php if ('1972' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1972</option>
+                            <option <?php if ('1971' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1971</option>
+                            <option <?php if ('1970' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1970</option>
+                            <option <?php if ('1969' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1969</option>
+                            <option <?php if ('1968' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1968</option>
+                            <option <?php if ('1967' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1967</option>
+                            <option <?php if ('1966' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1966</option>
+                            <option <?php if ('1965' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1965</option>
+                            <option <?php if ('1964' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1964</option>
+                            <option <?php if ('1963' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1963</option>
+                            <option <?php if ('1962' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1962</option>
+                            <option <?php if ('1961' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1961</option>
+                            <option <?php if ('1960' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1960</option>
+                            <option <?php if ('1959' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1959</option>
+                            <option <?php if ('1958' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1958</option>
+                            <option <?php if ('1957' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1957</option>
+                            <option <?php if ('1956' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1956</option>
+                            <option <?php if ('1955' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1955</option>
+                            <option <?php if ('1954' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1954</option>
+                            <option <?php if ('1953' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1953</option>
+                            <option <?php if ('1952' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1952</option>
+                            <option <?php if ('1951' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1951</option>
+                            <option <?php if ('1950' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1950</option>
+                            <option <?php if ('1949' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1949</option>
+                            <option <?php if ('1948' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1948</option>
+                            <option <?php if ('1947' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1947</option>
+                            <option <?php if ('1946' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1946</option>
+                            <option <?php if ('1945' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1945</option>
+                            <option <?php if ('1944' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1944</option>
+                            <option <?php if ('1943' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1943</option>
+                            <option <?php if ('1942' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1942</option>
+                            <option <?php if ('1941' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1941</option>
+                            <option <?php if ('1940' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1940</option>
+                            <option <?php if ('1939' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1939</option>
+                            <option <?php if ('1938' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1938</option>
+                            <option <?php if ('1937' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1937</option>
+                            <option <?php if ('1936' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1936</option>
+                            <option <?php if ('1935' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1935</option>
+                            <option <?php if ('1934' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1934</option>
+                            <option <?php if ('1933' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1933</option>
+                            <option <?php if ('1932' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1932</option>
+                            <option <?php if ('1931' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1931</option>
+                            <option <?php if ('1930' == $result["annee"]) {
+                                        echo 'selected';
+                                    } ?>>1930</option>
                         </select>
                     </div></br>
-                    Pays de résidence <select name='pays' value='' style='margin-left:25;'>
+                    Pays de résidence <select name='pays' style='margin-left:25;'>
                         <option value='selectionnez un pays'>Sélectionnez un pays</option>
-                        <option>France</option>
-                        <option>Belgique</option>
-                        <option>Luxembourg</option>
-                        <option>Allemagne</option>
-                        <option>Royaume-Uni</option>
-                        <option>Afghanistan</option>
-                        <option>Afrique de Sud</option>
-                        <option>Albanie</option>
-                        <option>Algérie</option>
-                        <option>Andorre</option>
-                        <option>Angola</option>
-                        <option>Anguilla</option>
-                        <option>Antigua-et-Barbuda</option>
-                        <option>Antilles Néérlandaises</option>
-                        <option>Arbie Saoudite</option>
-                        <option>Argentine</option>
-                        <option>Arménie</option>
-                        <option>Aruba</option>
-                        <option>Australie</option>
-                        <option>Autriche</option>
-                        <option>Azerbaidjan</option>
-                        <option>Bahamas</option>
-                        <option>Bahrein</option>
-                        <option>Bande de Gaza</option>
-                        <option>Bangladesh</option>
-                        <option>Barbade</option>
-                        <option>Beliz</option>
-                        <option>Bénin</option>
-                        <option>Bermudes</option>
-                        <option>Bhoutan</option>
-                        <option>Bilérussie</option>
-                        <option>Bolivie</option>
-                        <option>Bosnie-Herzégovine</option>
-                        <option>Botswana</option>
-                        <option>Brésil</option>
-                        <option>Brunei Darussalam</option>
-                        <option>Bulgarie</option>
-                        <option>Burkina Faso</option>
-                        <option>Burundi</option>
-                        <option>Cambodge</option>
-                        <option>Cameroun</option>
-                        <option>Canada</option>
-                        <option>Cap vert</option>
-                        <option>Chili</option>
-                        <option>Chine</option>
-                        <option>Chypre</option>
-                        <option>Cisjordanie</option>
-                        <option>Colombie</option>
-                        <option>Comores</option>
-                        <option>Congo</option>
-                        <option>Cook Islands</option>
-                        <option>Corée du Nord</option>
-                        <option>Corée du Sud</option>
+                        <option <?php if ('France' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>France</option>
+                        <option <?php if ('Belgique' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Belgique</option>
+                        <option <?php if ('Luxembourg' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Luxembourg</option>
+                        <option <?php if ('Allemagne' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Allemagne</option>
+                        <option <?php if ('Royaume-Uni' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Royaume-Uni</option>
+                        <option <?php if ('Afghanistan' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Afghanistan</option>
+                        <option <?php if ('Afrique de Sud' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Afrique de Sud</option>
+                        <option <?php if ('Albanie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Albanie</option>
+                        <option <?php if ('Algérie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Algérie</option>
+                        <option <?php if ('Andorre' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Andorre</option>
+                        <option <?php if ('Angola' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Angola</option>
+                        <option <?php if ('Anguilla' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Anguilla</option>
+                        <option <?php if ('Antigua-et-Barbuda' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Antigua-et-Barbuda</option>
+                        <option <?php if ('Antilles Néérlandaises' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Antilles Néérlandaises</option>
+                        <option <?php if ('Arbie Saoudite' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Arbie Saoudite</option>
+                        <option <?php if ('Argentine' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Argentine</option>
+                        <option <?php if ('Arménie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Arménie</option>
+                        <option <?php if ('Aruba' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Aruba</option>
+                        <option <?php if ('Australie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Australie</option>
+                        <option <?php if ('Autriche' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Autriche</option>
+                        <option <?php if ('Azerbaidjan' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Azerbaidjan</option>
+                        <option <?php if ('Bahamas' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bahamas</option>
+                        <option <?php if ('Bahrein' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bahrein</option>
+                        <option <?php if ('Bande de Gaza' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bande de Gaza</option>
+                        <option <?php if ('Bangladesh' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bangladesh</option>
+                        <option <?php if ('Barbade' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Barbade</option>
+                        <option <?php if ('Beliz' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Beliz</option>
+                        <option <?php if ('Bénin' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bénin</option>
+                        <option <?php if ('Bermudes' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bermudes</option>
+                        <option <?php if ('Bhoutan' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bhoutan</option>
+                        <option <?php if ('Bilérussie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bilérussie</option>
+                        <option <?php if ('Bolivie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bolivie</option>
+                        <option <?php if ('Bosnie-Herzégovine' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bosnie-Herzégovine</option>
+                        <option <?php if ('Botswana' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Botswana</option>
+                        <option <?php if ('Brésil' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Brésil</option>
+                        <option <?php if ('Brunei Darussalam' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Brunei Darussalam</option>
+                        <option <?php if ('Bulgarie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Bulgarie</option>
+                        <option <?php if ('Burkina Faso' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Burkina Faso</option>
+                        <option <?php if ('Burundi' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Burundi</option>
+                        <option <?php if ('Cambodge' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Cambodge</option>
+                        <option <?php if ('Cameroun' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Cameroun</option>
+                        <option <?php if ('Canada' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Canada</option>
+                        <option <?php if ('Cap vert' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Cap vert</option>
+                        <option <?php if ('Chili' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Chili</option>
+                        <option <?php if ('Chine' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Chine</option>
+                        <option <?php if ('Chypre' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Chypre</option>
+                        <option <?php if ('Cisjordanie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Cisjordanie</option>
+                        <option <?php if ('Colombie' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Colombie</option>
+                        <option <?php if ('Comores' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Comores</option>
+                        <option <?php if ('Congo' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Congo</option>
+                        <option <?php if ('Cook Islands' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Cook Islands</option>
+                        <option <?php if ('Corée du Nord' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Corée du Nord</option>
+                        <option <?php if ('Corée du Sud' == $result["pays"]) {
+                                    echo 'selected';
+                                } ?>>Corée du Sud</option>
                     </select></br>
                     E-mail<input type='text' name='email' value='<?php echo $result["email"]; ?>' style='margin-left:95;'></br>
                     Adresse<input type='text' name='adresse' value='<?php echo $result["adresse"]; ?>' style='margin-left:88;'></br>
@@ -288,62 +662,161 @@
                     Code postal<input type='text' name='postal' value='<?php echo $result["postal"]; ?>' style='margin-left:65;'></br>
                     Téléphone 1<input type='text' name='tele1' value='<?php echo $result["telephone1"]; ?>' style='margin-left:60;'></br>
                     Téléphone 2<input type='text' name='tele2' value='<?php echo $result["telephone2"]; ?>' style='margin-left:60;'></br>
-                    Fonction souhaitée<select name='metierre' style='margin-left: 22px;' value='<?php echo $result["metierrecherche"]; ?>'>
+                    Fonction souhaitée<select name='fonction' style='margin-left: 22px;' value='<?php echo $result["metierrecherche"]; ?>'>
                         <option>Choisissez un métier</option>
-                        <option>Acheteur</option>
-                        <option>Adjoint chef d’atelier</option>
-                        <option>Adjoint chef de centre</option>
-                        <option>Administrateur des ventes</option>
-                        <option>Ambassadeur show room</option>
-                        <option>Animateur réseau</option>
-                        <option>Apprenti carrossier/peintre</option>
-                        <option>Apprenti mécanicien</option>
-                        <option>Approvisionneur</option>
-                        <option>Assistant Homologation</option>
-                        <option>ASSISTANT QUALITE</option>
-                        <option>Attaché(e) commercial(e)</option>
-                        <option>Auditeur</option>
-                        <option>Carrossier peintre automobile</option>
-                        <option>Chargé d’affaire</option>
-                        <option>Chargé d’études marketing</option>
-                        <option>Chargé de clientèle</option>
-                        <option>Chargé de communication</option>
-                        <option>Chargé de recrutement</option>
-                        <option>Chauffeur livreur</option>
-                        <option>Chauffeur Routier</option>
-                        <option>Chef d’équipe Homologation</option>
-                        <option>Chef d’equipe logistique</option>
-                        <option>Chef d’unité carrosserie</option>
-                        <option>Chef d’unité mécanique</option>
-                        <option>Chef d’atelier</option>
+                        <option <?php if ('Acheteur' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Acheteur</option>
+                        <option <?php if ('Adjoint chef d’atelier' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Adjoint chef d’atelier</option>
+                        <option <?php if ('Adjoint chef de centre' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Adjoint chef de centre</option>
+                        <option <?php if ('Administrateur des ventes' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Administrateur des ventes</option>
+                        <option <?php if ('Ambassadeur show room' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Ambassadeur show room</option>
+                        <option <?php if ('Animateur réseau' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Animateur réseau</option>
+                        <option <?php if ('Apprenti carrossier/peintre' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Apprenti carrossier/peintre</option>
+                        <option <?php if ('Apprenti mécanicien' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Apprenti mécanicien</option>
+                        <option <?php if ('Approvisionneur' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Approvisionneur</option>
+                        <option <?php if ('Assistant Homologation' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Assistant Homologation</option>
+                        <option <?php if ('ASSISTANT QUALITE' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>ASSISTANT QUALITE</option>
+                        <option <?php if ('Attaché(e) commercial(e)' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Attaché(e) commercial(e)</option>
+                        <option <?php if ('Auditeur' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Auditeur</option>
+                        <option <?php if ('Carrossier peintre automobile' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Carrossier peintre automobile</option>
+                        <option <?php if ('Chargé d’affaire' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chargé d’affaire</option>
+                        <option <?php if ('Chargé d’études marketing' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chargé d’études marketing</option>
+                        <option <?php if ('Chargé de clientèle' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chargé de clientèle</option>
+                        <option <?php if ('Chargé de communication' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chargé de communication</option>
+                        <option <?php if ('Chargé de recrutement' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chargé de recrutement</option>
+                        <option <?php if ('Chauffeur livreur' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chauffeur livreur</option>
+                        <option <?php if ('Chauffeur Routier' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chauffeur Routier</option>
+                        <option <?php if ('Chef d’équipe Homologation' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chef d’équipe Homologation</option>
+                        <option <?php if ('Chef d’equipe logistique' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chef d’equipe logistique</option>
+                        <option <?php if ('Chef d’unité carrosserie' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chef d’unité carrosserie</option>
+                        <option <?php if ('Chef d’unité mécanique' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chef d’unité mécanique</option>
+                        <option <?php if ('Chef d’atelier' == $result["metierrecherche"]) {
+                                    echo 'selected';
+                                } ?>>Chef d’atelier</option>
                     </select></br>
                     Secteur d'activité <select name='activite' style='margin-left: 28px;' value='<?php echo $result["activite"]; ?>'>
-                        <option value='choisissez une activité'>choisissez une activité</option>
-                        <option value='autre'>Autre</option>
-                        <option value='Cadre en administration / col.terr.'>Cadre en administration / col.terr.</option>
-                        <option value='Cadre en entreprise'>Cadre en entreprise</option>
-                        <option value='Chef d’entreprise'>Chef d’entreprise</option>
-                        <option value='Employé ou ouvrier'>Employé ou ouvrier</option>
-                        <option value='Enseignant'>Enseignant</option>
-                        <option value='Etudiant'>Etudiant</option>
-                        <option value='Profession intermèdiaire'>Profession intermèdiaire</option>
-                        <option value='Profession libérale'>Profession libérale</option>
-                        <option value='Retraité'>Retraité</option>
+                        <option <?php if ('' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>choisissez une activité</option>
+                        <option <?php if ('Autre' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Autre</option>
+                        <option <?php if ('Cadre en administration / col.terr.' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Cadre en administration / col.terr.</option>
+                        <option <?php if ('Cadre en entreprise' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Cadre en entreprise</option>
+                        <option <?php if ('Chef d’entreprise' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Chef d’entreprise</option>
+                        <option <?php if ('Employé ou ouvrier' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Employé ou ouvrier</option>
+                        <option <?php if ('Enseignant' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Enseignant</option>
+                        <option <?php if ('Etudiant' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Etudiant</option>
+                        <option <?php if ('Profession intermèdiaire' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Profession intermèdiaire</option>
+                        <option <?php if ('Profession libérale' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Profession libérale</option>
+                        <option <?php if ('Retraité' == $result["activite"]) {
+                                    echo 'selected';
+                                } ?>>Retraité</option>
                     </select></br>
-                    Disponibilité<select style='margin-left:59;' value='<?php echo $result["disponibilite"]; ?>' selected="selected">
-                        <option value='En recherche d’activité'>En recherche d’activité</option>
-                        <option value='A l’écoute du marché'>A l’écoute du marché</option>
+                    Disponibilité<select style='margin-left:59;' name='disponiblite' selected="selected">
+                        <option <?php if ('En recherche d’activité' == $result["disponiblite"]) {
+                                    echo 'selected';
+                                } ?>>En recherche d’activité</option>
+                        <option <?php if ('A l’écoute du marché' == $result["disponiblite"]) {
+                                    echo 'selected';
+                                } ?>>A l’écoute du marché</option>
                     </select>
-                    </br> Mobilité géographique<select name=mobilite value='<?php echo $result["mobilite"]; ?>'>
-                        <option value='Aucune'>Aucune</option>
-                        <option value='Régionale'>Régionale</option>
-                        <option value='Nationale'>Nationale</option>
-                        <option value='Continentale'>Continentale</option>
-                        <option value='Globale'>Globale</option>
+                    </br> Mobilité géographique<select name=mobilite>
+                        <option <?php if ('Aucune' == $result["mobilite"]) {
+                                    echo 'selected';
+                                } ?>>Aucune</option>
+                        <option <?php if ('Régionale' == $result["mobilite"]) {
+                                    echo 'selected';
+                                } ?>>Régionale</option>
+                        <option <?php if ('Nationale' == $result["mobilite"]) {
+                                    echo 'selected';
+                                } ?>>Nationale</option>
+                        <option <?php if ('Continentale' == $result["mobilite"]) {
+                                    echo 'selected';
+                                } ?>>Continentale</option>
+                        <option <?php if ('Globale' == $result["mobilite"]) {
+                                    echo 'selected';
+                                } ?>>Globale</option>
                     </select></br>
                     <input type='checkbox' name='offre' style='margin-left:14;' checked='checked' />Je souhaite recevoir occasionnellement par email les offres d'emploi en rapport avec mon secteur d'activité ?</br>
                     <input type=submit value=MODIFIER class='modifier'>
-                    <p style='margin-left: 165px; color:#428bca;'>Modifier le mot de passe</p>
+                    <form onclick="return validate()" name='myform'>
+                        <p style='margin-left: 165px; color:#428bca; text-decoration:underline; cursor:pointer;' onclick="myFunction()">
+                            Modifier le mot de passe
+                        </p>
+                        <div id="myDIV">
+                            Mot de passe actuel<input type='password' name='mtp' ></br>
+                            Nouveau mot de passe <input type='password' name='nvmtp' ></br>
+                            Confirmation mot de passe <input type='password' name='confmtp'></br>
+                            </bR><input type='submit' value='MODIFIER' class='modifier'>
+                        </div>
+                    </form>
+
                 </div>
             </form>
         </div>
@@ -364,3 +837,33 @@
 </body>
 
 </html>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function validate() {
+        var oldpass = document.forms.write["myform"]["$result['password']"].value;
+        var pass = document.forms.write["myform"]["mtp"].value;
+        var passwd = document.forms["myform"]["nvmtp"].value;
+        var conf = document.forms["myform"]["confmtp"].value;
+
+        if (passwd != conf) {
+            alert("Les mots de passe ne sont pas identiques");
+            return false;
+        }
+        if (passwd.length <= 12) {
+            alert("votre mot de passe doit respecter les conditions");
+            return false;
+        }
+        if (pass != oldpass) {
+            alert("mot de passe incorrecte");
+            return false;
+        }
+    }
+</script>

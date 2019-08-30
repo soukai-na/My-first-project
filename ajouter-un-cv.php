@@ -2,6 +2,7 @@
 session_start();
 ?>
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
@@ -32,7 +33,7 @@ session_start();
         if (!$conn) {
             echo 'Error:' . mysqli_connect_error();
         }
-       
+
 
         ?>
         <div class=icon>
@@ -47,7 +48,7 @@ session_start();
                 ><a href=>Gérer mes CV</a></br>
                 ><a href=>Gérer mes lettres de motivation</a></br>
                 ><a href=>Modifier mes informations personnelles</a></br>
-                <span><a href=" . $href . ">Se déconnecter</a> </span>
+                <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
         </div>
 
@@ -56,20 +57,22 @@ session_start();
     <div id='sous'>
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
-    <div class='inserer-cv'>
-        <p  style='color:brown;font-size:25px;font-family:sans-serif;'>Insérer un CV dans mon compte</p>
-        <b style='color:red;' >Votre CV</b></br>
-        Sélectionner un CV<p><input type="file" name="myfile"></p><p style='color:red;'>(.doc, .pdf, .docx, .rtf, .txt de 2 mo ou moins)</p></br>
-        Titre de votre CV<input type='text' name='titre' placeholder="Titre accrocheur">
-        <span> Niveau d'expérience<select name=niveau  style='margin-left: 16px;    margin-bottom: 15px;'>
-                <option value='Choisissez'>Choisissez</option>
-                <option value='Débutant et jeune diplomé'>Débutant et jeune diplomé</option>
-                <option value='2 à 4 ans d’expérience'>2 à 4 ans d’expérience</option>
-                <option value='5 ans d’expérience et plus'>5 ans d’expérience et plus</option>
-                <option value='Aucune ecpérience automobile'>Aucune ecpérience automobile</option>
-            </select></span>
+    <form method=POST action=cv-bd.php >
+        <div class='inserer-cv'>
+            <p style='color:brown;font-size:25px;font-family:sans-serif;'>Insérer un CV dans mon compte</p>
+            <b style='color:red;'>Votre CV</b></br>
+            Sélectionner un CV<p><input type="file" name="myfile"></p>
+            <p style='color:red;'>(.doc, .pdf, .docx, .rtf, .txt de 2 mo ou moins)</p></br>
+            Titre de votre CV<input type='text' name='titre' placeholder="Titre accrocheur">
+            <span> Niveau d'expérience<select name=niveau style='margin-left: 16px;    margin-bottom: 15px;'>
+                    <option value='Choisissez'>Choisissez</option>
+                    <option value='Débutant et jeune diplomé'>Débutant et jeune diplomé</option>
+                    <option value='2 à 4 ans d’expérience'>2 à 4 ans d’expérience</option>
+                    <option value='5 ans d’expérience et plus'>5 ans d’expérience et plus</option>
+                    <option value='Aucune ecpérience automobile'>Aucune ecpérience automobile</option>
+                </select></span>
             </br>
-            Fonction envisagée<select name='fonction'   style='margin-left: 60px;    margin-bottom: 15px;'>
+            Fonction envisagée<select name='fonction' style='margin-left: 60px;    margin-bottom: 15px;'>
                 <option>Choisissez un métier</option>
                 <option>Acheteur</option>
                 <option>Adjoint chef d’atelier</option>
@@ -99,20 +102,20 @@ session_start();
                 <option>Chef d’atelier</option>
             </select>
             <span>Niveau d'études <select style='margin-left: 39px;    margin-bottom: 15px;'>
-                <option name='Choisissez'>Choisissez</option>
-                <option name='CAP'>CAP</option>
-                <option name='BEP'>BEP</option>
-                <option name='BAC'>BAC</option>
-                <option name='BAC+1'>BAC+1</option>
-                <option name='BAC+2'>BAC+2</option>
-                <option name='BAC+3'>BAC+3</option>
-                <option name='BAC+4'>BAC+4</option>
-                <option name='BAC+5'>BAC+5</option>
-                <option name='>BAC+5'>>BAC+5</option>
-                <option name='Aucune formation automobile'>Aucune formation automobile</option>
-            </select></span>
+                    <option name='Choisissez'>Choisissez</option>
+                    <option name='CAP'>CAP</option>
+                    <option name='BEP'>BEP</option>
+                    <option name='BAC'>BAC</option>
+                    <option name='BAC+1'>BAC+1</option>
+                    <option name='BAC+2'>BAC+2</option>
+                    <option name='BAC+3'>BAC+3</option>
+                    <option name='BAC+4'>BAC+4</option>
+                    <option name='BAC+5'>BAC+5</option>
+                    <option name='>BAC+5'>>BAC+5</option>
+                    <option name='Aucune formation automobile'>Aucune formation automobile</option>
+                </select></span>
             </br>
-            Type de contrat souhaité<select name=contrat   style='margin-left: 28px;    margin-bottom: 15px;'>
+            Type de contrat souhaité<select name=contrat style='margin-left: 28px;    margin-bottom: 15px;'>
                 <option name='Choisissez'>Choisissez</option>
                 <option name='Contrat à Durée Indéterminée(CDI)'>Contrat à Durée Indéterminée(CDI)</option>
                 <option name='Contrat à Durée Déterminée(CDD)'>Contrat à Durée Déterminée(CDD)</option>
@@ -125,13 +128,27 @@ session_start();
                 <option name='contrat de stage'>contrat de stage</option>
             </select>
             <span>Consultable par d'autres recruteurs ?<input type=radio checked=checked name=consultable>OUI <input type=radio name=consultable>NON</span>
-    </div>
-    </br>
-    <div class='inserer-cv'>
-        <b>Informations supplémentaires sur votre CV</b>
-
-    </div>
-
+        </div>
+        </br>
+        <div class='inserer-cv'>
+            <b>Informations supplémentaires sur votre CV</b></br></br>
+            <b style='color:darkred; margin-right:10px;'>Expérience professionnelle</b>Augmentez vos opportunités afin de trouver un emploi en remplissant ce champ
+            <textarea placeholder="Informations supplémentaires sur votre CV..."></textarea>
+            </br>
+            <b style='color:darkred; margin-right:10px;'>Éducation et formations</b>Augmentez vos opportunités afin de trouver un emploi en remplissant ce champ
+            <textarea placeholder="Éducation et formations..."></textarea>
+            </br>
+            <b style='color:darkred; margin-right:10px;'>Langues</b>Augmentez vos opportunités afin de trouver un emploi en remplissant ce champ
+            <textarea placeholder="Langues..."></textarea>
+            </br>
+            <b style='color:darkred; margin-right:10px;'>Compétences personnelles</b>Augmentez vos opportunités afin de trouver un emploi en remplissant ce champ
+            <textarea placeholder="Compétences personnelles..."></textarea>
+            </br>
+            <b style='color:darkred; margin-right:10px;'>Informations complémentaires</b>Augmentez vos opportunités afin de trouver un emploi en remplissant ce champ
+            <textarea placeholder="Informations complémentaires..."></textarea>
+        </div>
+        <span><input type='submit' value='AJOUTER MON CV'></span>
+    </form>
     <?php include('scriptes/footer.php'); ?>
 </body>
 

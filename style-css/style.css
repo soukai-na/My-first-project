@@ -2387,3 +2387,24 @@ margin-bottom: 15px;
   margin-left:10px;
   height: 35px;
 }
+#myDIV{
+  display:none;
+}
+.inserer-cv textarea{
+  width: 1015px;
+  height: 198px;
+  border: 2px solid darkred;
+  margin: 0px;
+  padding: 10;
+  margin-top: 10px;
+}
+span input[type=submit]{
+  background:#e6333c;
+  border:1px solid #e6333c;
+  height: 50px;
+  margin-top:35px;
+  margin-bottom: 30px;
+    font-weight: 900;
+    color: white;
+    margin-left: 840px;
+}

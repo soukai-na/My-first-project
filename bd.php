@@ -49,7 +49,7 @@
             $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
             $sel = mysqli_select_db($conn, 'autorecrute') or die("erreur de connexion base");
             $req = mysqli_query($conn, "INSERT INTO formulaire (id,email,password,nom,prenom,annee,mois,jour,pays,adresse,ville,postal,telephone1,telephone2,mobilite,activite,metieractuel,metierrecherche,disponiblite) 
-            VALUES (null,'$email','$passwd','$nom','$prenom','$annee','$mois','$jour','$pays','$adr','$ville','$postal','$tele1','$tele2','$mobilite','$activite','$metierac','$metierre','$disp')");
+            VALUES (null,'$email',md5('$passwd'),'$nom','$prenom','$annee','$mois','$jour','$pays','$adr','$ville','$postal','$tele1','$tele2','$mobilite','$activite','$metierac','$metierre','$disp')");
 
             if ($req) {
                 echo '<div id=face1>
