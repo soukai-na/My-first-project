@@ -77,32 +77,33 @@
                 <p>Vous n'avez toujours pas ajouté de CV à votre compte Autorecrute. Saviez-vous qu'un candidat avec un CV a potentiellement 100 fois plus de chance de ce faire recruter. Alors n'hésitez pas : </p>
                 <b id='moncv'>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
-                <form method='POST' action='show-cv.php'>
-                    <span style="display:flex;">
-                        <span>
-                            <i class='material-icons' style='font-size:70px;'>insert_drive_file</i>
-                        </span>
-                        <span style='margin-top:20; margin-right:19px;'>
-                            <?php
-                            $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
-                            $sql = mysqli_query($conn, $req);
-                            $result = mysqli_fetch_array($sql);
-                            if ($result) {
-                                echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
-                                    "</br>Disponibilité : " . $_SESSION['disponiblite'] . "
-                                    <input type='submit' value='Modifier' style='margin-left: 0px;'>
-            
-            
-                                    <button class='btn-sup' name='delete'>Suspendre</button>";
-                            } else {
-                                echo "<span style='margin-top:45px;'>0 CV!</span>";
-                            }
-                            ?>
-                        </span>
 
-
+                <span style="display:flex;">
+                    <span>
+                        <i class='material-icons' style='font-size:70px;'>insert_drive_file</i>
                     </span>
-                </form>
+                    <span style='margin-top:20; margin-right:19px;'>
+                        <?php
+                        $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
+                        $sql = mysqli_query($conn, $req);
+                        $result = mysqli_fetch_array($sql);
+                        if ($result) {
+                            echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
+                                "</br>Disponibilité : " . $_SESSION['disponiblite'] . "
+                                    <form method='POST' action='show-cv.php'><input type='submit' value='Modifier' style='margin-left: 0px;'></form>
+            
+                            <form method='POST' action='cv-supprimer.php' ><button class='btn-sup' name='delete'>Suspendre</button></form>
+
+                                    ";
+                        } else {
+                            echo "<span style='margin-top:45px;'>0 CV!</span>";
+                        }
+                        $_SESSION['titre']=$result['titre'];
+                        ?>
+                    </span>
+
+
+                </span>
 
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
                 <b id="motivation">Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
@@ -114,7 +115,7 @@
                     <?php
                     $requete = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
                     $sqli = mysqli_query($conn, $requete);
-                    $resultat =mysqli_fetch_array($sqli);
+                    $resultat = mysqli_fetch_array($sqli);
                     if ($resultat) {
                         echo "Objet:<b>" . $resultat['objet'] . "</b></br><input type='submit' value='Modifier' style='margin-left: 0px;margin-top: -30px;margin-right: 169px; color:white; font-weight:bold;'>
                   <button class='btn-sup' name='delete' style='margin-right: 60px;margin-top:-30px; margin-left:11px;'>Suspendre</button></br>";

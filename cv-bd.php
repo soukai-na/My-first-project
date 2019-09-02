@@ -70,8 +70,7 @@ session_start();
 
     if (
         empty($file) || empty($titre) || empty($niveau) || empty($fonction) || empty($nvetude) ||
-        empty($contrat) || empty($consultable) || empty($infosupp) || empty($edecform) || empty($langue)
-        || empty($comppers) || empty($infocomp)
+        empty($contrat) || empty($consultable) 
     ) {
         echo '<font color=red >Veuillez remplire tous les champs</font>';
         echo '<p style="color:red; font-size:33px;"><i class="material-icons">error</i>Error</p></br>

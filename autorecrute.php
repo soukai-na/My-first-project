@@ -35,8 +35,8 @@
                     <font color=white face=arial size=6>Mon compte</font>
                 </p>
                 <hr><a href=https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=77reu8cupyym2y&state=fc68342e58e6e0cfc1b7b33399480ef2&redirect_uri=http%3A%2F%2Fwww.autorecrute.com%2F&scope=r_basicprofile%20r_emailaddress> <img src=images/linkedin.png /></a></br></br>
-                <input type=text id=mail  name=mail placeholder=Adresse-e-mail required /></br></br>
-                <span><input type=password id=passwd name=passwd placeholder=Mot-de-passe required /><img src=images/eye.png onclick="myFunction()" style='cursor:pointer;'/></span></br>
+                <input type=text id=mail name=mail placeholder=Adresse-e-mail required /></br></br>
+                <span><input type=password id=passwd name=passwd placeholder=Mot-de-passe required /><img src=images/eye.png onclick="myFunction()" style='cursor:pointer;' /></span></br>
                 <input type='hidden' name='nom' value='<?php echo $_POST['nom']; ?>' />
                 <p id=mtp onclick="myfunction()" style="cursor:pointer; margin-top:15px;">
                     <font size=1px face=arial>>Mot de passe oublié?</font>
@@ -99,11 +99,17 @@
 </html>
 <script>
     function myfunction() {
+        var email = document.forms["myform"]["mail"].value;
+        var exp = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
         var pass = prompt('entrez votre email', 'user@gmail.com');
-        if (pass != null) {
-            alert('veuillez visiter votre boite email! ');
+        if (pass = exp.test(pass)) {
+            if (pass != null) {
+                alert('veuillez visiter votre boite email! ');
+            } else {
+                alert('Veuillez entrer votre email pour récupérer votre mot de passe');
+            }
         } else {
-            alert('Veuillez entrer votre email pour récupérer votre mot de passe');
+            alert('Email incorecte');
         }
     }
 
@@ -122,13 +128,13 @@
         }
 
     }
-    function myFunction() {
-  var x = document.getElementById("passwd");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-</script>
 
+    function myFunction() {
+        var x = document.getElementById("passwd");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

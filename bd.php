@@ -46,8 +46,6 @@
             </p><div display:block; ></div><div style=" margin-left: 205px; background:white;"><a href="http://localhost/autorecrute/inscription.php"><button style="color: white; font-family: sans-serif; border: 1px solid black; width: 165px; height: 44px; border-radius: 20px; font-size: 15px; background-color: #e6333c; margin-top:110px; margin-left:-350px;">Retour à la formulaire</button></a></div>';
         } else {
             $md5 = md5('$passwd');
-            var_dump($passwd);
-            var_dump($md5);
             $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
             $sel = mysqli_select_db($conn, 'autorecrute') or die("erreur de connexion base");
             $req = mysqli_query($conn, "INSERT INTO formulaire (id,email,password,nom,prenom,annee,mois,jour,pays,adresse,ville,postal,telephone1,telephone2,mobilite,activite,metieractuel,metierrecherche,disponiblite) 

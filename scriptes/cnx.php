@@ -4,7 +4,7 @@
         <?php
         
         $mail = $_POST['mail'];
-        $passwd = $_POST['passwd'];
+        $passwd = md5($_POST['passwd']);
         if (isset($mail) && isset($passwd)) {
 
             $result = mysqli_query($conn, "SELECT * FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
