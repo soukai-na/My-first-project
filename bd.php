@@ -38,18 +38,20 @@
         $condition = $_POST['condition'];
         $email = $_POST['email'];
         $passwd = $_POST['passwd'];
-        
+
         if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['pays']) || empty($_POST['adr']) || empty($_POST['ville']) || empty($_POST['postal']) || empty($_POST['tele1']) || empty($_POST['mobilite']) || empty($_POST['activite']) || empty($_POST['metierre']) || empty($_POST['disp']) || empty($_POST['condition'])) {
             echo '<font color=red >Veuillez remplire tous les champs</font>';
             echo '<p style="color:red; font-size:33px;"><i class="material-icons">error</i>Error</p></br>
             <p style="color=black; font-size:15px;">' . mysqli_error($conn) . '
             </p><div display:block; ></div><div style=" margin-left: 205px; background:white;"><a href="http://localhost/autorecrute/inscription.php"><button style="color: white; font-family: sans-serif; border: 1px solid black; width: 165px; height: 44px; border-radius: 20px; font-size: 15px; background-color: #e6333c; margin-top:110px; margin-left:-350px;">Retour à la formulaire</button></a></div>';
         } else {
-
+            $md5 = md5('$passwd');
+            var_dump($passwd);
+            var_dump($md5);
             $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
             $sel = mysqli_select_db($conn, 'autorecrute') or die("erreur de connexion base");
             $req = mysqli_query($conn, "INSERT INTO formulaire (id,email,password,nom,prenom,annee,mois,jour,pays,adresse,ville,postal,telephone1,telephone2,mobilite,activite,metieractuel,metierrecherche,disponiblite) 
-            VALUES (null,'$email',md5('$passwd'),'$nom','$prenom','$annee','$mois','$jour','$pays','$adr','$ville','$postal','$tele1','$tele2','$mobilite','$activite','$metierac','$metierre','$disp')");
+            VALUES (null,'$email','$md5','$nom','$prenom','$annee','$mois','$jour','$pays','$adr','$ville','$postal','$tele1','$tele2','$mobilite','$activite','$metierac','$metierre','$disp')");
 
             if ($req) {
                 echo '<div id=face1>

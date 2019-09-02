@@ -89,13 +89,12 @@
                             $result = mysqli_fetch_array($sql);
                             if ($result) {
                                 echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
-                                    "</br>Disponibilité : " . $_SESSION['disponiblite']."
+                                    "</br>Disponibilité : " . $_SESSION['disponiblite'] . "
                                     <input type='submit' value='Modifier' style='margin-left: 0px;'>
             
             
                                     <button class='btn-sup' name='delete'>Suspendre</button>";
-
-                            }else{
+                            } else {
                                 echo "<span style='margin-top:45px;'>0 CV!</span>";
                             }
                             ?>
@@ -104,9 +103,27 @@
 
                     </span>
                 </form>
+
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
                 <b id="motivation">Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
-                </br></br>
+                </br>
+                <form method='POST' action='show-lettre.php'>
+                    <span>
+                        <i class='material-icons' style='font-size:70px;'>insert_drive_file</i>
+                    </span>
+                    <?php
+                    $requete = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
+                    $sqli = mysqli_query($conn, $requete);
+                    $resultat =mysqli_fetch_array($sqli);
+                    if ($resultat) {
+                        echo "Objet:<b>" . $resultat['objet'] . "</b></br><input type='submit' value='Modifier' style='margin-left: 0px;margin-top: -30px;margin-right: 169px; color:white; font-weight:bold;'>
+                  <button class='btn-sup' name='delete' style='margin-right: 60px;margin-top:-30px; margin-left:11px;'>Suspendre</button></br>";
+                    } else {
+                        echo "<span>0 Lettre de Motivation!</span>";
+                    }
+                    ?>
+                </form>
+                </br>
                 <b>Mes annonces sélectionnées</b><input type='submit' id='annonce-svg' name='submit' value='VOIR MES ANNONCES SAUVEGARDÉES' />
             </div>
         </div>

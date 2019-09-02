@@ -24,6 +24,7 @@
         <input type='hidden' name='email' value='<?php echo $POST['mail']; ?>' />
         <input type='hidden' name='password' value='<?php echo $POST['passwd']; ?>' />
         <?php
+        $link='autorecrute.php';
         $href='autorecrute.php';
         include('scriptes/cnx.php'); ?>
 

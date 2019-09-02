@@ -2427,3 +2427,11 @@ span input[type=submit]{
   padding: 10;
   margin-top: 10px;
 }
+.tab1 form button{
+  background-color: #e6333c;
+    border: 1px #e6333c solid;
+}
+.tab2 form button{
+  background-color: #e6333c;
+    border: 1px #e6333c solid;
+}

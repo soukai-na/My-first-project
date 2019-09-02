@@ -92,7 +92,7 @@
     </table>
   </div>
   </br>
-  <a href='http://localhost/autorecrute/emploi-et-stage.php'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;'/></a></br>
+  <a href='http://localhost/autorecrute/emploi-et-stage.php#acceuil'><img src='images/ss.png' style='cursor:pointer;margin-right:30;margin-top:-117px; width:50; float:right;'/></a></br>
   <?php include('scriptes/footer.php');?>
 </body>
 </html>
