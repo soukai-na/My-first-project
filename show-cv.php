@@ -43,11 +43,11 @@ session_start();
             <p class=fiche>
                 </br>
                 ><a href='mon-compte.php'>Mon Compte</a></br>
-                ><a href=>Suivre mes annonces sauvegardées</a></br>
-                ><a href=>Suivre mes candidatures</a></br>
-                ><a href=>Gérer mes CV</a></br>
-                ><a href=>Gérer mes lettres de motivation</a></br>
-                ><a href=>Modifier mes informations personnelles</a></br>
+                ><a href=mes-annonces.php>Suivre mes annonces sauvegardées</a></br>
+                ><a href=mes-candidatures.php>Suivre mes candidatures</a></br>
+                ><a href=mon-compte.php#cv>Gérer mes CV</a></br>
+                ><a href=mon-compte.php#motivation>Gérer mes lettres de motivation</a></br>
+                ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
                 <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
         </div>
@@ -62,11 +62,11 @@ session_start();
     $result = mysqli_fetch_array($sqli);
 
     ?>
-    <form method=POST action=update-cv.php>
+    <form method=POST action='update-cv.php'>
         <div class='inserer-cv'>
             <p style='color:brown;font-size:25px;font-family:sans-serif;'>Insérer un CV dans mon compte</p>
             <b style='color:red;'>Votre CV</b></br>
-            Sélectionner un CV<p><input type="file" name="file"></p>
+            Sélectionner un CV<p><input type="file" name="file" value='<?php echo $result['file'];  ?>'></p>
             <font style='color:lightgreen; text-decoration:underline;'><?php echo $result['file'];  ?></font>
             <p style='color:red;'>(.doc, .pdf, .docx, .rtf, .txt de 2 mo ou moins)</p></br>
             Titre de votre CV<input type='text' name='titre' placeholder="Titre accrocheur" value='<?php echo $result['titre']; ?>'>

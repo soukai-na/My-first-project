@@ -48,8 +48,8 @@
                 ><a href='mon-compte.php'>Mon Compte</a></br>
                 ><a href=mes-annonces.php>Suivre mes annonces sauvegardées</a></br>
                 ><a href=mes-candidatures.php>Suivre mes candidatures</a></br>
-                ><a href=mon-compte.php>Gérer mes CV</a></br>
-                ><a href=mon-compte.php>Gérer mes lettres de motivation</a></br>
+                ><a href=mon-compte.php#moncv>Gérer mes CV</a></br>
+                ><a href=mon-compte.php#motivation>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
                 <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
@@ -75,7 +75,7 @@
 
             <div id='cvv'>
                 <p>Vous n'avez toujours pas ajouté de CV à votre compte Autorecrute. Saviez-vous qu'un candidat avec un CV a potentiellement 100 fois plus de chance de ce faire recruter. Alors n'hésitez pas : </p>
-                <b>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
+                <b id='moncv'>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
                 <form method='POST' action='show-cv.php'>
                     <span style="display:flex;">
@@ -87,20 +87,25 @@
                             $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
                             $sql = mysqli_query($conn, $req);
                             $result = mysqli_fetch_array($sql);
-                            echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
-                                "</br>Disponibilité : " . $_SESSION['disponiblite'];
+                            if ($result) {
+                                echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
+                                    "</br>Disponibilité : " . $_SESSION['disponiblite']."
+                                    <input type='submit' value='Modifier' style='margin-left: 0px;'>
+            
+            
+                                    <button class='btn-sup' name='delete'>Suspendre</button>";
+
+                            }else{
+                                echo "<span style='margin-top:45px;'>0 CV!</span>";
+                            }
                             ?>
                         </span>
 
-                        <input type='submit' value='Modifier' style='margin-left: 0px;'>
-
-
-                        <button class='btn-sup' name='delete'>Suspendre</button>
 
                     </span>
                 </form>
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
-                <b>Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
+                <b id="motivation">Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
                 </br></br>
                 <b>Mes annonces sélectionnées</b><input type='submit' id='annonce-svg' name='submit' value='VOIR MES ANNONCES SAUVEGARDÉES' />
             </div>

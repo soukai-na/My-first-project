@@ -44,11 +44,11 @@ session_start();
             <p class=fiche>
                 </br>
                 ><a href='mon-compte.php'>Mon Compte</a></br>
-                ><a href=>Suivre mes annonces sauvegardées</a></br>
-                ><a href=>Suivre mes candidatures</a></br>
-                ><a href=>Gérer mes CV</a></br>
-                ><a href=>Gérer mes lettres de motivation</a></br>
-                ><a href=>Modifier mes informations personnelles</a></br>
+                ><a href=mes-annonces.php>Suivre mes annonces sauvegardées</a></br>
+                ><a href=mes-candidatures.php>Suivre mes candidatures</a></br>
+                ><a href=mon-compte.php#cv>Gérer mes CV</a></br>
+                ><a href=mon-compte.php#motivation>Gérer mes lettres de motivation</a></br>
+                ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
                 <span><a href=deconnexion.php>Se déconnecter</a> </span>
             </p>
         </div>
@@ -66,16 +66,15 @@ session_start();
     $nvetude = $_POST['nvetude'];
     $contrat = $_POST['contrat'];
     $consultable = $_POST['consultable'];
-    $infosupp=$_POST['infosupp'];
-    $edecform=$_POST['edecform'];
-    $langue=$_POST['langue'];
-    $comppers=$_POST['comppers'];
-    $infocomp=$_POST['infocomp'];
+    $infosupp = $_POST['infosupp'];
+    $edecform = $_POST['edecform'];
+    $langue = $_POST['langue'];
+    $comppers = $_POST['comppers'];
+    $infocomp = $_POST['infocomp'];
     $requete = "UPDATE cv SET file='$file',titre='$titre',niveauexp='$niveau',
-    fonction='$fonction',niveauetd='$nvetude',contrat='$contrat',consultable='$consultable',expprof='$infosup',
-    edcform='$edecform',langues='$langue',comppres='$comppers',infocomp='$infocomp' ";
+    fonction='$fonction',niveauetd='$nvetude',contrat='$contrat',consultable='$consultable',expprof='$infosupp',
+    edcform='$edecform',langues='$langue',comppers='$comppers',infocomp='$infocomp' ";
     $sqli = mysqli_query($conn, $requete);
-
     $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
     $sql = mysqli_query($conn, $req);
     $result = mysqli_fetch_array($sql);
@@ -84,7 +83,7 @@ session_start();
         <div class='inserer-cv'>
             <p style='color:brown;font-size:25px;font-family:sans-serif;'>Insérer un CV dans mon compte</p>
             <b style='color:red;'>Votre CV</b></br>
-            Sélectionner un CV<p><input type="file" name="file"></p>
+            Sélectionner un CV<p><input type="file" name="file" value='<?php echo $result['file'];  ?>' multiple></p>
             <font style='color:lightgreen; text-decoration:underline;'><?php echo $result['file'];  ?></font>
             <p style='color:red;'>(.doc, .pdf, .docx, .rtf, .txt de 2 mo ou moins)</p></br>
             Titre de votre CV<input type='text' name='titre' placeholder="Titre accrocheur" value='<?php echo $result['titre']; ?>'>
