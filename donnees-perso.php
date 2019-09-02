@@ -810,8 +810,8 @@
                             Modifier le mot de passe
                         </p>
                         <div id="myDIV">
-                            Mot de passe actuel<input type='password' name='mtp' ></br>
-                            Nouveau mot de passe <input type='password' name='nvmtp' ></br>
+                            Mot de passe actuel<input type='password' name='mtp'></br>
+                            Nouveau mot de passe <input type='password' name='nvmtp'></br>
                             Confirmation mot de passe <input type='password' name='confmtp'></br>
                             </bR><input type='submit' value='MODIFIER' class='modifier'>
                         </div>

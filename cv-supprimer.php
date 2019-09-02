@@ -60,7 +60,6 @@
     <div id='sous'>
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> >Mon compte</div>
     </div>
-
     <div id='face'>
 
         </br>
@@ -77,15 +76,24 @@
                 <p>Vous n'avez toujours pas ajouté de CV à votre compte Autorecrute. Saviez-vous qu'un candidat avec un CV a potentiellement 100 fois plus de chance de ce faire recruter. Alors n'hésitez pas : </p>
                 <b>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
-                <form method='POST' action='show-cv.php'>
+                <form method='POST' action='cv-supprimer.php'>
                     <span style="display:flex;">
                         <span>
                             <i class='material-icons' style='font-size:70px;'>insert_drive_file</i>
                         </span>
                         <span style='margin-top:20; margin-right:19px;'>
                             <?php
-                            $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
-                            $sql = mysqli_query($conn, $req);
+                            if ($_POST['delete']) {
+                                $req = "DELETE FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+                                $bd = mysqli_query($conn, $req);
+                                if ($bd) {
+                                    echo 'deleted';
+                                } else {
+                                    echo mysqli_error($conn);
+                                }
+                            }
+                            $requete = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+                            $sql = mysqli_query($conn, $requete);
                             $result = mysqli_fetch_array($sql);
                             echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
                                 "</br>Disponibilité : " . $_SESSION['disponiblite'];

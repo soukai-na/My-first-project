@@ -11,7 +11,6 @@ session_start();
 </head>
 
 <body>
-
     <header>
         <?php include('scriptes/menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
@@ -58,27 +57,10 @@ session_start();
     <div id='sous'>
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
-    <?php
-    $file = $_POST['file'];
-    $titre = $_POST['titre'];
-    $niveau = $_POST['niveau'];
-    $fonction = $_POST['fonction'];
-    $nvetude = $_POST['nvetude'];
-    $contrat = $_POST['contrat'];
-    $consultable = $_POST['consultable'];
-    $infosupp=$_POST['infosupp'];
-    $edecform=$_POST['edecform'];
-    $langue=$_POST['langue'];
-    $comppers=$_POST['comppers'];
-    $infocomp=$_POST['infocomp'];
-    $requete = "UPDATE cv SET file='$file',titre='$titre',niveauexp='$niveau',
-    fonction='$fonction',niveauetd='$nvetude',contrat='$contrat',consultable='$consultable',expprof='$infosup',
-    edcform='$edecform',langues='$langue',comppres='$comppers',infocomp='$infocomp' ";
-    $sqli = mysqli_query($conn, $requete);
+    <?php $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+    $sqli = mysqli_query($conn, $req);
+    $result = mysqli_fetch_array($sqli);
 
-    $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
-    $sql = mysqli_query($conn, $req);
-    $result = mysqli_fetch_array($sql);
     ?>
     <form method=POST action=update-cv.php>
         <div class='inserer-cv'>
