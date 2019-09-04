@@ -1,12 +1,14 @@
 <?php session_start();  ?>
 <?php
+$servername = "localhost";
+$username = 'root';
+$password = 'P@ssw0rd';
+$conn = mysqli_connect($servername, $username, $password, 'autorecrute');
+if (!$conn) {
+    echo 'Error:' . mysqli_connect_error();
+}
 $req = "SELECT id,titre1,titre2,texte,lien1,lien2,img FROM offre ";
 $result = mysqli_query($conn, $req);
-if ($result) {
-    echo 'OOOOOOOKKKK';
-} else {
-    echo "EROR:".mysqli_error($conn);
-}
 $sql = mysqli_fetch_array($result);
 if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) { 
 
@@ -27,12 +29,12 @@ if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <?php
-    $req = "SELECT * FROM header";
-    $result = mysqli_query($conn, $req);
-    $sql = mysqli_fetch_array($result);
+    $reqq = "SELECT * FROM header";
+    $res = mysqli_query($conn, $reqq);
+    $header = mysqli_fetch_array($res);
     ?>
     <div id='back'></br>
-        <div id='n1' style='margin-left:184px; margin-right: 178px; '><?php echo $sql['texte1']; ?></div>
+        <div id='n1' style='margin-left:184px; margin-right: 178px; '><?php echo $header['texte1']; ?></div>
         </br>
 
 
@@ -80,7 +82,7 @@ if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
                 <table>
                     <?php
                     
-                        if ($_POST['submit'] && $sql['titre1']!=null) {
+                        if ($_POST['submit']) {
                             $prenom = $_SESSION['prenom'];
                             $nom = $_SESSION['nom'];
                             $titre1 = $sql['titre1'];
