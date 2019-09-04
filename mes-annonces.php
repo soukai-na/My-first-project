@@ -1,4 +1,16 @@
 <?php session_start();  ?>
+<?php
+$req = "SELECT id,titre1,titre2,texte,lien1,lien2,img FROM offre ";
+$result = mysqli_query($conn, $req);
+if ($result) {
+    echo 'OOOOOOOKKKK';
+} else {
+    echo "EROR:".mysqli_error($conn);
+}
+$sql = mysqli_fetch_array($result);
+if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) { 
+
+?>
 <html>
 
 <head>
@@ -25,13 +37,6 @@
 
 
         <?php
-        $servername = "localhost";
-        $username = 'root';
-        $password = 'P@ssw0rd';
-        $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
-        if (!$conn) {
-            echo 'Error:' . mysqli_connect_error();
-        }
         $mail = $_POST['email'];
         $passwd = $_POST['password'];
         $resultt = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
@@ -62,36 +67,52 @@
     <div id='face'>
 
         </br>
-        <div id='face1' style='border: 3px black solid;width: 553px;height: 370px;'>
+        <div id='face1' style='border: 3px black solid;width: 648px;'>
             <div class=buttons>
-                <a href=mon-compte.php><button id=b2>Mon profil Autorecrute</button></a>
-                <a href=mes-annonces.php><button id=b1>Mes annonces sauvegardées</button></a>
-                <a href=mes-candidatures.php><button id=b3>Mes candidatures</button></a>
-                <a href=donnees-perso.php><button id=b4>Données perso</button></a>
+                <a href=mon-compte.php><button id=b2 style='width: 167px;'>Mon profil Autorecrute</button></a>
+                <a href=mes-annonces.php><button id=b1 style='width:205px;'>Mes annonces sauvegardées</button></a>
+                <a href=mes-candidatures.php><button id=b3 style='width:150px;'>Mes candidatures</button></a>
+                <a href=donnees-perso.php><button id=b4 style='width:130px;'>Données perso</button></a>
             </div>
 
 
             <div class='svg'>
                 <table>
                     <?php
-                    if($_POST['submit']){
-                        $requete="INSERT INTO annonces(id,annonce) VALUES(null,'')";
-                        $query=mysqli_query($conn,$requete);
-                        $resultat=mysqli_fetch_array($query);
-                        if($query){
-                            echo 'oooooook';
-                        }else{
-                            echo mysqli_erorr($conn);
+                    
+                        if ($_POST['submit'] && $sql['titre1']!=null) {
+                            $prenom = $_SESSION['prenom'];
+                            $nom = $_SESSION['nom'];
+                            $titre1 = $sql['titre1'];
+                            $titre2 = $sql['titre2'];
+                            $texte = $sql['texte'];
+                            $lien1 = $sql['lien1'];
+                            $lien2 = $sql['lien2'];
+                            $img = $sql['img'];
+                            $requete = "INSERT INTO annonces(id,nom,prenom,titre1,titre2,texte,lien1,lien2,img) VALUES (null,'$nom','$prenom','$titre1','$titre2','$texte','$lien1','$lien2','$img')";
+                            $query = mysqli_query($conn, $requete);
+                            $resultat = mysqli_fetch_array($query);
                         }
-                    }
-                    $req = "SELECT * FROM annonces WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
-                    $sql=mysqli_query($conn,$req);
-                    $result=mysqli_fetch_array($sql);
+                        $reqt = "SELECT * FROM annonces WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id ";
+                        $sqli = mysqli_query($conn, $reqt);
+                      while( $array = mysqli_fetch_array($sqli)){
 
-                    echo $result['annonce']."</br>";
+                        echo "<form method=POST action='supprimer-annonce.php'><div class=tab1>
+                     <p>
+                     <font color=gray size=2>" . $array['titre1'] . " </font></br>
+                     <font color=red><b>" . $array['titre2'] . "</b></font></br>
+                     <font color=black>" . $array['texte'] . "</font>
+                     </br></br>
+                     <font color=red size=2>" . $array['lien1'] . "</font>
+                     </p><p>
+                     <button style='margin-bottom: 9px;margin-top:-20px;background:#dddddd;border:#dddddd;'>Supprimer l'annonce</button></br>" . $array['img'] .
+                            "</p></div></form></br>";
+                        }
+                    
                     ?>
+
                     <tr>
-                        <td>Préc.</td>
+                        <td style='cursor:pointer;'>Préc.</td>
                         <td style='color:#5d5e65; width:38px; background:#f3f5f7;'>1</td>
                     </tr>
                 </table>
@@ -114,3 +135,9 @@
 </body>
 
 </html>
+<?php 
+}else{
+    include('autorecrute.php');
+    echo "<script>alert('Connectez vous!');</script>";
+}
+?>

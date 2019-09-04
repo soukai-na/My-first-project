@@ -48,7 +48,7 @@
                 ><a href='mon-compte.php'>Mon Compte</a></br>
                 ><a href=mes-annonces.php>Suivre mes annonces sauvegardées</a></br>
                 ><a href=mes-candidatures.php>Suivre mes candidatures</a></br>
-                ><a href=mon-compte.php#cv>Gérer mes CV</a></br>
+                ><a href=mon-compte.php#moncv>Gérer mes CV</a></br>
                 ><a href=mon-compte.php#motivation>Gérer mes lettres de motivation</a></br>
                 ><a href=donnees-perso.php>Modifier mes informations personnelles</a></br>
                 <span><a href=deconnexion.php>Se déconnecter</a> </span>
@@ -74,7 +74,7 @@
 
             <div id='cvv'>
                 <p>Vous n'avez toujours pas ajouté de CV à votre compte Autorecrute. Saviez-vous qu'un candidat avec un CV a potentiellement 100 fois plus de chance de ce faire recruter. Alors n'hésitez pas : </p>
-                <b id=cv>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
+                <b id=moncv>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
                 <span style="display:flex;">
                     <span>
@@ -86,29 +86,43 @@
                         $requete = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
                         $sql = mysqli_query($conn, $requete);
                         $result = mysqli_fetch_array($sql);
-                        echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
-                            "</br>Disponibilité : " . $_SESSION['disponiblite'];
+                        if ($result) {
+                            echo "<b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
+                                "</br>Disponibilité : " . $_SESSION['disponiblite'];
+                            echo  "<form method='POST' action='show-cv.php'><input type='submit' value='Modifier' style='margin-left: 0px;'></form>";
+                            echo "<form method='POST' action='cv-supprimer.php'>";
+                            $reqq = "DELETE FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre='" . $_SESSION['titre'] . "'";
+                            $bd = mysqli_query($conn, $reqq);
+                            echo "<button class='btn-sup' name='delete' style='margin-right: -111px;margin-top: 33px;'>Suspendre</button></form>";
+                        } else {
+                            echo '0 CV!';
+                        }
+
                         ?>
                     </span>
 
-                    <form method='POST' action='show-cv.php'><input type='submit' value='Modifier' style='margin-left: 0px;'></form>
-
-                    <form method='POST' action='cv-supprimer.php'><?php
-
-                                                                    $reqq = "DELETE FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre='".$_SESSION['titre']."'";
-                                                                    $bd = mysqli_query($conn, $reqq);
-                                                                    if ($bd) {
-                                                                        echo 'deleted';
-                                                                    } else {
-                                                                        echo mysqli_error($conn);
-                                                                    }
-                                                                    ?><button class='btn-sup' name='delete' style='margin-right: -111px;margin-top: 33px;'>Suspendre</button></form>
 
                 </span>
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
                 <b id=motivation>Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
-                </br></br>
-                <b>Mes annonces sélectionnées</b><input type='submit' id='annonce-svg' name='submit' value='VOIR MES ANNONCES SAUVEGARDÉES' />
+                </br>
+                    <span>
+                        <i class='material-icons' style='font-size:70px;'>insert_drive_file</i>
+                    </span>
+                    <?php
+                    $requete = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
+                    $sqli = mysqli_query($conn, $requete);
+                    $resultat = mysqli_fetch_array($sqli);
+                    if ($resultat) {
+                        echo "Objet:<b>" . $resultat['objet'] . "</b></br>
+                            <form method='POST' action='show-lettre.php'><input type='submit' value='Modifier' style='margin-left: 0px;margin-top: -30px;margin-right: 169px; color:white; font-weight:bold;'></form>
+                      <form method='POST' action='lettre-supprimer.php'><button class='btn-sup' name='delete' style='margin-right: 60px;margin-top:-30px; margin-left:11px;'>Suspendre</button></form></br>";
+                    } else {
+                        echo "<span>0 Lettre de Motivation!</span>";
+                    }
+                    ?>
+                </br>
+                <b>Mes annonces sélectionnées</b><a href='mes-annonces.php' ><input type='submit' id='annonce-svg' name='submit' value='VOIR MES ANNONCES SAUVEGARDÉES' /></a>
             </div>
         </div>
         <div id='face2'>

@@ -64,7 +64,7 @@ session_start();
         echo '<font color=red >Veuillez remplire tous les champs</font>';
         echo '<p style="color:red; font-size:33px;"><i class="material-icons">error</i>Error</p></br>
         <p style="color=black; font-size:15px;">' . mysqli_error($conn) . '
-        </p><div display:block; ></div><div style="  background:white;"><a href=""><button style="color: white; font-family: sans-serif; border: 1px solid black; width: 165px; height: 44px; border-radius: 20px; font-size: 15px; background-color: #e6333c; margin-top:110px;">Retour à la formulaire</button></a></div>';
+        </p><div display:block; ></div><div style="  background:white;"><input type="text" value="Retour à la formulaire" onclick="history.back()" style="color: white; font-family: sans-serif; border: 1px solid black; width: 165px; height: 44px; border-radius: 20px; font-size: 15px; background-color: #e6333c; margin-top:110px;"></div>';
     } else {
         $prenom = $_SESSION['prenom'];
         $nom = $_SESSION['nom'];

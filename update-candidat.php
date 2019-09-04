@@ -85,7 +85,10 @@
         $mtp = $_POST['mtp'];
         $nvmtp = $_POST['nvmtp'];
         $confmtp = $_POST['confmtp'];
-        $requete = "UPDATE formulaire SET email='$email' , nom='$nom' , prenom='$prenom' , annee='$annee' , mois='$mois' , jour='$jour' , pays='$pays' , adresse='$adresse' , ville='$ville' , postal='$postal' , telephone1='$tele1' , telephone2='$tele2' , mobilite='$mobilite' , activite='$activite' , metierrecherche='$fonction' , disponiblite='$disponiblite' ";
+        $requete = "UPDATE formulaire SET email='$email' , nom='$nom' , prenom='$prenom' , annee='$annee' , 
+        mois='$mois' , jour='$jour' , pays='$pays' , adresse='$adresse' , ville='$ville' , 
+        postal='$postal' , telephone1='$tele1' , telephone2='$tele2' , mobilite='$mobilite' , 
+        activite='$activite' , metierrecherche='$fonction' , disponiblite='$disponiblite' ";
         $query = mysqli_query($conn, $requete);
         if ($nvmtp != null) {
             $update = "UPDATE formulaire SET password='md5($nvmtp)'";
@@ -830,7 +833,7 @@
                     </select></br>
 
                     <input type='checkbox' name='offre' style='margin-left:14;' checked='checked' />Je souhaite recevoir occasionnellement par email les offres d'emploi en rapport avec mon secteur d'activité ?</br>
-                    <input type=submit value=MODIFIER class='modifier'>
+                    <input type=submit value=MODIFIER class='modifier'></form>
                     <form onclick="return validate()" name='myform'>
                         <p style='margin-left: 165px; color:#428bca; text-decoration:underline; cursor:pointer;' onclick="myFunction()">
                             Modifier le mot de passe

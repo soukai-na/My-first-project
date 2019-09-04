@@ -32,7 +32,8 @@
             $prenom = $_POST['prenom'];
             $fonction = $_POST['fonction'];
             $mail = $_POST['mail'];
-            $mtp = $_POST['mtp'];
+            $mtp=$_POST['mtp'];
+            $mtp = md5($mtp);
             $confmtp = $_POST['confmtp'];
             $tele = $_POST['tele'];
             $file = $_POST['myfile'];
@@ -59,9 +60,9 @@
 
                 $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
                 $sel = mysqli_select_db($conn, 'autorecrute') or die("erreur de connexion base");
-                $req = mysqli_query($conn, "INSERT INTO formulaire2 (id,societe,pays,adresse,postal,ville,telephone1,fax1,site,adrfacturation,postalfacturation,villefacturation,file,civilite,nom,prenom,fonction,email,password,telephone2,teleportable,fax2) 
-            VALUES (null,'$nom','$pays','$adresse','$postal','$ville','$telephone','$fax1','$site','$adrfact','$postalfact','$villefact',
-            '$file','$civilite','$nom2','$prenom','$fonction','$mail',$mtp,'$tele','$teleptb','$fax2')");
+                $req = mysqli_query($conn, "INSERT INTO formulaire2 (id,societe,pays,type,adresse,postal,ville,telephone1,fax1,site,adrfacturation,postalfacturation,villefacturation,file,civilite,nom,prenom,fonction,email,password,telephone2,teleportable,fax2) 
+            VALUES (null,'$nom','$pays','$type','$adresse','$postal','$ville','$telephone','$fax1','$site','$adrfact','$postalfact','$villefact',
+            '$file','$civilite','$nom2','$prenom','$fonction','$mail','$mtp','$tele','$teleptb','$fax2')");
 
 
 

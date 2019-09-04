@@ -804,7 +804,7 @@
                                 } ?>>Globale</option>
                     </select></br>
                     <input type='checkbox' name='offre' style='margin-left:14;' checked='checked' />Je souhaite recevoir occasionnellement par email les offres d'emploi en rapport avec mon secteur d'activité ?</br>
-                    <input type=submit value=MODIFIER class='modifier'>
+                    <input type=submit value=MODIFIER class='modifier'></form>
                     <form onclick="return validate()" name='myform'>
                         <p style='margin-left: 165px; color:#428bca; text-decoration:underline; cursor:pointer;' onclick="myFunction()">
                             Modifier le mot de passe
@@ -813,12 +813,10 @@
                             Mot de passe actuel<input type='password' name='mtp'></br>
                             Nouveau mot de passe <input type='password' name='nvmtp'></br>
                             Confirmation mot de passe <input type='password' name='confmtp'></br>
-                            </bR><input type='submit' value='MODIFIER' class='modifier'>
+                            </bR><input type='submit' value='MODIFIER' class='modifier'></form>
                         </div>
-                    </form>
-
                 </div>
-            </form>
+            
         </div>
         <div id='face2'>
             <div class='first'>

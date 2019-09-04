@@ -2328,7 +2328,7 @@ footer #pied1{
 }
 .svg{
   text-align: -webkit-center;
-  margin-top:100px;
+  margin-top:25px;
 }
 .formulaire input[type=text]{
   width: 230px;
@@ -2434,4 +2434,46 @@ span input[type=submit]{
 .tab2 form button{
   background-color: #e6333c;
     border: 1px #e6333c solid;
+}
+#update{
+  background: #e6333c;
+  color: white;
+  border-radius: 2px;
+  border: 1px #e6333c solid;
+  width: 144px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 45px;
+  margin-left: 268px;
+  margin-top: 38px;
+}
+.icon input[type=submit]{
+  background:#e6333c;
+  color:white;
+  border-radius: 2px;
+  border:1px #e6333c solid;
+  margin-top: 34px;
+  width: 144px;
+  height: 40px;
+  font-size: 15px;
+    font-weight: 900;
+}
+#title {
+  display:flex;
+}
+#title button{
+  background: white;
+  border:white;
+  height: 47px;
+  cursor:pointer;
+  font-size:16px;
+}
+.tab1 form button{
+  margin-right:20px;
+  margin-top: 160px;
+}
+.tab2 form button{
+  margin-right:20px;
+  margin-top: 160px;
 }
