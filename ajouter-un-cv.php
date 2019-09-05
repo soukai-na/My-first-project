@@ -127,7 +127,7 @@ session_start();
                 <option name='contrat Nouvelles Embauches(CNE)'>contrat Nouvelles Embauches(CNE)</option>
                 <option name='contrat de stage'>contrat de stage</option>
             </select>
-            <span>Consultable par d'autres recruteurs ?<input type=radio checked=checked name=consultable>OUI <input type=radio name=consultable>NON</span>
+            <span>Consultable par d'autres recruteurs ?<input type=radio checked=checked name=consultable value='OUI'>OUI <input type=radio name=consultable value='NON' >NON</span>
         </div>
         </br>
         <div class='inserer-cv'>

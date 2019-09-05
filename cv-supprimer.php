@@ -91,9 +91,9 @@
                                 "</br>Disponibilité : " . $_SESSION['disponiblite'];
                             echo  "<form method='POST' action='show-cv.php'><input type='submit' value='Modifier' style='margin-left: 0px;'></form>";
                             echo "<form method='POST' action='cv-supprimer.php'>";
-                            $reqq = "DELETE FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre='" . $_SESSION['titre'] . "'";
+                            $reqq = "DELETE FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre='" . $_POST['titre'] ."'";
                             $bd = mysqli_query($conn, $reqq);
-                            echo "<button class='btn-sup' name='delete' style='margin-right: -111px;margin-top: 33px;'>Suspendre</button></form>";
+                            echo "<button class='btn-sup' name='delete' style='margin-right:-111px;margin-top: 33px;'>Suspendre</button></form>";
                         } else {
                             echo '0 CV!';
                         }

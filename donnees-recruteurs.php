@@ -30,7 +30,7 @@ if (!$conn) {
     </div>
     <div id='face'>
         <div id='face1'>
-            <form method='POST' action='update-donnees-recruteurs.php'>
+            <form method='POST' enctype="multipart/form-data" action='update-donnees-recruteurs.php'>
                 <?php
                 $req = "SELECT * FROM formulaire2 WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
                 $query = mysqli_query($conn, $req);

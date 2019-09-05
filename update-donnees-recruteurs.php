@@ -54,6 +54,7 @@ if (!$conn) {
             $file = $_POST['myfile'];
             $fax2 = $_POST['fax2'];
             $teleptb = $_POST['teleptb'];
+            $myfile = $_POST['myfile'];
 
             $requete = "UPDATE formulaire2 
             SET societe='$nom' ,
@@ -67,15 +68,21 @@ if (!$conn) {
              adrfacturation='$adrfact' , 
             postalfacturation='$postalfact',
             villefacturation='$villefact' , 
-            `file`='$file' , civilite='$civilite' ,
+             civilite='$civilite' ,
              nom='$nom2' , prenom='$prenom' ,
               fonction='$fonction' ,
             email='$mail' , 
             `password`='$mtp' , 
-            telephone2='$tele' , teleportable='$teleptb' ,
+            telephone2='$tele' , 
+            teleportable='$teleptb' ,
              fax2='$fax2' ";
-
             $sqli = mysqli_query($conn, $requete);
+            if (isset($myfile)) {
+                $r = "UPDATE formulaire2 SET `file`=$file";
+                $q = mysqli_query($conn, $r);
+            }
+
+
             ?>
             <p style="color:green; background:#d6e9c6; border:1px solid green; width:600; padding:10;">modification terminé</p>
             <form method='POST' action='update-donnees-recruteurs.php'>
@@ -270,11 +277,8 @@ if (!$conn) {
                     <p id="texte" style="display:none">*Adresse de facturation<input type=text name=adrfact style='margin-bottom:10; margin-left: 65px;' value='<?php echo $sql['adrfacturation']; ?>'></br>
                         *Code Postal de facturation<input type=text name=postalfact style='margin-bottom:10; margin-left: 40px;' value='<?php echo $sql['postalfacturation']; ?>'></br>
                         *Ville de facturation
-                        <input type='text' 
-                              name='villefact' 
-                              style='margin-bottom:10; margin-left: 83px;' 
-                              value='<?php echo $sql['villefacturation']; ?>' >
-                    </br>
+                        <input type='text' name='villefact' style='margin-bottom:10; margin-left: 83px;' value='<?php echo $sql['villefacturation']; ?>'>
+                        </br>
                     </p>
                     </br>
                     <span style='margin-bottom:10; margin-left:325;'>*Obligatoire </span></br>
@@ -321,15 +325,17 @@ if (!$conn) {
             </form>
         </div>
         <div id='face2'>
-           <form method='POST' action='cnx-recruteur.php'><div class=icon style='margin-left: 100;'><i class='material-icons' name='button' style='cursor:pointer;'>account_circle</i></form>
-                <p style='font-size:37;margin-bottom:0px;    font-family: sans-serif;
+            <form method='POST'>
+                <div class=icon style='margin-left: 100;'><i class='material-icons' name='button' style='cursor:pointer;'>account_circle</i>
+            </form>
+            <p style='font-size:37;margin-bottom:0px;    font-family: sans-serif;
                                   font-weight: 900;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?>
 
-                </p>
-                </br><a href='cnx-recruteur.php' ><input type='submit' name='button' value='Acceuil' /></a>
-            </br><a href='deconnexion-recruteur.php' ><button>Deconnexion</button></a>
-            </div>
+            </p>
+            </br><a href='cnx-recruteur.php'><input type='submit' name='button' value='Acceuil' /></a>
+            </br><a href='deconnexion-recruteur.php'><button>Deconnexion</button></a>
         </div>
+    </div>
     </div>
     </br>
 

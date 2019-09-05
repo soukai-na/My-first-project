@@ -55,7 +55,7 @@
             </p>
         </div>
         <?php
-        $req="SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+        $req="SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'and objet='" . $_POST['objet'] . "'";
         $sqli = mysqli_query($conn, $req);
         $result = mysqli_fetch_array($sqli);
 

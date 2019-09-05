@@ -7,24 +7,14 @@ $conn = mysqli_connect($servername, $username, $password, 'autorecrute');
 if (!$conn) {
     echo 'Error:' . mysqli_connect_error();
 }
-$select = "SELECT * FROM annonces WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
-var_dump($_SESSION['prenom']);
+$select = "SELECT * FROM annonces WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre2='".$_POST['title']."'";
 $qry = mysqli_query($conn, $select);
-if($qry){
-    echo 'ça marche';
-}else{
-    echo "EROR:".mysqli_error($conn);
-}
 $fetch = mysqli_fetch_array($qry);
-if ($fetch) {
-    $req = "DELETE FROM annonces WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+if ($fetch && isset($_POST['suppression'])) {
+    $req = "DELETE FROM annonces WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre2='".$_POST['title']."'";
     $result = mysqli_query($conn, $req);
-    if ($result) {
-        echo 'OOOOOOOKKKK';
-    } else {
-        echo "EROR:" . mysqli_error($conn);
-    }
     $sql = mysqli_fetch_array($result);
+    
 }
 if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 

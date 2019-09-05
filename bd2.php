@@ -32,8 +32,7 @@
             $prenom = $_POST['prenom'];
             $fonction = $_POST['fonction'];
             $mail = $_POST['mail'];
-            $mtp=$_POST['mtp'];
-            $mtp = md5($mtp);
+            $md5 = md5('$mtp');
             $confmtp = $_POST['confmtp'];
             $tele = $_POST['tele'];
             $file = $_POST['myfile'];
@@ -50,7 +49,7 @@
             if (
                 empty($nom) || empty($type) || empty($pays) || empty($adresse) || empty($postal) ||
                 empty($ville) || empty($telephone) || empty($nom2) || empty($prenom) || empty($fonction)
-                || empty($mail) || empty($mtp) || empty($confmtp) || empty($tele) || empty($file)
+                || empty($mail) || empty($md5) || empty($confmtp) || empty($tele) || empty($file)
             ) {
                 echo '<font color=red >Veuillez remplire tous les champs</font>';
                 echo '<p style="color:red; font-size:33px;"><i class="material-icons">error</i>Error</p></br>
@@ -62,7 +61,7 @@
                 $sel = mysqli_select_db($conn, 'autorecrute') or die("erreur de connexion base");
                 $req = mysqli_query($conn, "INSERT INTO formulaire2 (id,societe,pays,type,adresse,postal,ville,telephone1,fax1,site,adrfacturation,postalfacturation,villefacturation,file,civilite,nom,prenom,fonction,email,password,telephone2,teleportable,fax2) 
             VALUES (null,'$nom','$pays','$type','$adresse','$postal','$ville','$telephone','$fax1','$site','$adrfact','$postalfact','$villefact',
-            '$file','$civilite','$nom2','$prenom','$fonction','$mail','$mtp','$tele','$teleptb','$fax2')");
+            '$file','$civilite','$nom2','$prenom','$fonction','$mail','$md5','$tele','$teleptb','$fax2')");
 
 
 

@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 <html>
-
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png" />
@@ -116,9 +115,10 @@
                 if ($result) {
 
                     echo "Objet: <b>" . $result['objet'];
-                    echo  "<form method='POST' action='show-lettre.php'><input type='submit' value='Modifier' style='margin-left: 0px;'></form>";
+                    echo  "<form method='POST' action='show-lettre.php'>
+                    <input type='submit' value='Modifier' style='margin-left: 0px;'></form>";
                     echo "<form method='POST' action='lettre-supprimer.php'>";
-                    $reqq = "DELETE FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+                    $reqq = "DELETE FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'and objet='" . $_POST['objet'] . "'";
                     $bd = mysqli_query($conn, $reqq);
                     echo "<button class='btn-sup' name='delete' style='margin-right: -111px;margin-top: 33px;'>Suspendre</button></form>";
                 } else {

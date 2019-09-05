@@ -57,7 +57,7 @@ session_start();
     <div id='sous'>
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
-    <?php $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
+    <?php $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'and titre='" . $_POST['titre'] . "'";
     $sqli = mysqli_query($conn, $req);
     $result = mysqli_fetch_array($sqli);
 
@@ -264,6 +264,7 @@ session_start();
             <b style='color:darkred; margin-right:10px;'>Informations complémentaires</b>Augmentez vos opportunités afin de trouver un emploi en remplissant ce champ
             <textarea name='infocomp' placeholder="Informations complémentaires..."><?php echo $result['infocomp']; ?></textarea>
         </div>
+        <input type='hidden' name='title' value='<?php $_POST['titre'] ?>' />
         <span><input type='submit' value='MODIFIER'></span>
     </form>
     <?php include('scriptes/footer.php'); ?>

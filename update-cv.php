@@ -59,6 +59,13 @@ session_start();
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
     <?php
+    var_dump($_POST['title']);   
+    echo   "ttt". $_POST['title'];
+    
+    $query = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre='".$_POST['title']."'";
+    $sqll = mysqli_query($conn, $query);
+    $resultt = mysqli_fetch_array($sqll);
+
     $file = $_POST['file'];
     $titre = $_POST['titre'];
     $niveau = $_POST['niveau'];
@@ -73,7 +80,7 @@ session_start();
     $infocomp = $_POST['infocomp'];
     $requete = "UPDATE cv SET file='$file',titre='$titre',niveauexp='$niveau',
     fonction='$fonction',niveauetd='$nvetude',contrat='$contrat',consultable='$consultable',expprof='$infosupp',
-    edcform='$edecform',langues='$langue',comppers='$comppers',infocomp='$infocomp' ";
+    edcform='$edecform',langues='$langue',comppers='$comppers',infocomp='$infocomp' WHERE titre='".$_POST['title']."'";
     $sqli = mysqli_query($conn, $requete);
     $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
     $sql = mysqli_query($conn, $req);
@@ -83,11 +90,11 @@ session_start();
         <div class='inserer-cv'>
             <p style='color:brown;font-size:25px;font-family:sans-serif;'>Insérer un CV dans mon compte</p>
             <b style='color:red;'>Votre CV</b></br>
-            Sélectionner un CV<p><input type="file" name="file" value='<?php echo $result['file'];  ?>' multiple></p>
+            Sélectionner un CV<p><input type="file" name="file" value='<?php echo $result['file'];  ?>'></p>
             <font style='color:lightgreen; text-decoration:underline;'><?php echo $result['file'];  ?></font>
             <p style='color:red;'>(.doc, .pdf, .docx, .rtf, .txt de 2 mo ou moins)</p></br>
             Titre de votre CV<input type='text' name='titre' placeholder="Titre accrocheur" value='<?php echo $result['titre']; ?>'>
-            <span> Niveau d'expérience<select name=niveau style='margin-left: 16px;    margin-bottom: 15px;'>
+            <span> Niveau d'expérience<select name=niveau style='margin-left: 16px;margin-bottom: 15px;'>
                     <option <?php if ('' == $result["niveauexp"]) {
                                 echo 'selected';
                             } ?>>Choisissez</option>
@@ -105,7 +112,7 @@ session_start();
                             } ?>>Aucune ecpérience automobile</option>
                 </select></span>
             </br>
-            Fonction envisagée<select name='fonction' style='margin-left: 60px;    margin-bottom: 15px;'>
+            Fonction envisagée<select name='fonction' style='margin-left: 60px;margin-bottom: 15px;'>
                 <option>Choisissez un métier</option>
                 <option <?php if ('Acheteur' == $result["fonction"]) {
                             echo 'selected';
@@ -222,7 +229,7 @@ session_start();
                             } ?>>Aucune formation automobile</option>
                 </select></span>
             </br>
-            Type de contrat souhaité<select name=contrat style='margin-left: 28px;    margin-bottom: 15px;'>
+            Type de contrat souhaité<select name=contrat style='margin-left: 28px;margin-bottom: 15px;'>
                 <option <?php if ('' == $result["contrat"]) {
                             echo 'selected';
                         } ?>>Choisissez</option>

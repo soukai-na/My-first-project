@@ -41,7 +41,7 @@ if (!$conn) {
 
       <div id='face2'>
         </br>
-        <form method=POST action='cnx-recruteur.php' onsubmit="return validate()" name='myform'>
+        <form method=POST action='cnx-recruteur.php'  onsubmit="return validate()" name='myform'>
           <div class='compte' style='margin-left:10;'>
             <p>
               <font color='white' face='arial' size='5'><b>Mon compte recruteur</b></font>

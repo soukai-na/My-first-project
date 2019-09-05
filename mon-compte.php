@@ -78,34 +78,40 @@
                 <b id='moncv'>Mes CV publiés</b><a href='ajouter-un-cv.php'><input type='submit' id='annonce-svg' name='submit' value='AJOUTER UN CV' /></a>
                 </br></br>
 
-                
-                        <?php
-                        $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
-                        $sql = mysqli_query($conn, $req);
-                        while ($result = mysqli_fetch_array($sql)) {
-                            echo "<span style='display:flex;'>
+
+                <?php
+                $req = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
+                $sql = mysqli_query($conn, $req);
+                while ($result = mysqli_fetch_array($sql)) {
+                    echo "<span style='display:flex;'>
                     <span>
                         <a href='show-cv.php' style='color:black;'><i class='material-icons' style='font-size:70px;'>insert_drive_file</i></a>
                     </span>
                     <span style='margin-top:20; margin-right:19px;'><b>" . $result['titre'] . "</b></br>Fonction envisagée : " . $result['fonction'] .
-                                "</br>Disponibilité : " . $_SESSION['disponiblite'] . "
-                                    <form method='POST' action='show-cv.php'><input type='submit' value='Modifier' style='margin-left: 0px;'></form>
+                        "</br>Disponibilité : " . $_SESSION['disponiblite'] . "
+                                    <form method='POST' action='show-cv.php'>
+                                        <input type='hidden' name='titre' value='" . $result['titre'] . "' />
+                                        <input type='submit' name='modifier' value='Modifier' style='margin-left: 0px;'>
+                                    </form>
             
-                            <form method='POST' action='cv-supprimer.php' ><button class='btn-sup' name='delete'>Suspendre</button></form>
+                            <form method='POST' action='cv-supprimer.php' >
+                                <input type='hidden' name='titre' value='" . $result['titre'] . "' />
+                                <button class='btn-sup' name='delete'>Suspendre</button>
+                            </form>
 
                                     </span>
 
 
                 </span>";
-                        }
-                        $_SESSION['titre'] = $result['titre'];
-                        ?>
-                    
+                }
+
+                ?>
+
 
                 <p>Astuce : Ajouter une lettre de motivation augmente votre visibilité auprès des recruteurs potentiels. Gagnez en visibilité en quelques minutes :</p>
                 <b id="motivation">Mes lettres de motivation</b><a href=lettre-de-motivation.php><input type='submit' name='submit' value='Mes lettres de motivation' /></a>
                 </br>
-                
+
                 <?php
                 $requete = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
                 $sqli = mysqli_query($conn, $requete);
@@ -113,9 +119,17 @@
                     echo "<span>
                     <a href='show-lettre.php' style='color:black;'><i class='material-icons' style='font-size:70px;'>insert_drive_file</i></a>
                 </span><span>Objet:<b>" . $resultat['objet'] . "</b></span></br>
-                        <form method='POST' action='show-lettre.php'><input type='submit' value='Modifier' style='margin-left: 0px;margin-top: -30px;margin-right: 169px; color:white; font-weight:bold;'></form>
-                  <form method='POST' action='lettre-supprimer.php'><button class='btn-sup' name='delete' style='margin-right: 60px;margin-top:-47px; margin-left:11px;'>Suspendre</button></form></br>";
+                        <form method='POST' action='show-lettre.php'>
+                        <input type='hidden' name='objet' value='" . $resultat['objet'] . "' />
+                        <input type='submit' value='Modifier' style='margin-left: 0px;margin-top: -30px;margin-right: 169px; color:white; font-weight:bold;'>
+                        </form>
+
+                  <form method='POST' action='lettre-supprimer.php'>
+                  <input type='hidden' name='objet' value='" . $resultat['objet'] . "' />
+                  <button class='btn-sup' name='delete' style='margin-right: 60px;margin-top:-47px; margin-left:11px;'>Suspendre</button>
+                  </form></br>";
                 }
+                
                 ?>
                 </br>
                 <b>Mes annonces sélectionnées</b><a href='mes-annonces.php'><input type='submit' id='annonce-svg' name='submit' value='VOIR MES ANNONCES SAUVEGARDÉES' /></a>

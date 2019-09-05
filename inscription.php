@@ -9,7 +9,7 @@ if($_POST['btn']){
     }
 
 $email = $_POST['mail'];
-$passwd = $_POST['pass'];
+$passwd = md5($_POST['passwd']);
 
 $req = mysqli_query($conn, 'SELECT email FROM formulaire');
 $sql=mysqli_fetch_assoc($req);

@@ -53,9 +53,11 @@
                 $req = "SELECT * FROM offre WHERE id=1";
                 $result = mysqli_query($conn, $req);
                 $sql = mysqli_fetch_array($result);
+
                 ?>
                 <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font></br></br>
@@ -79,6 +81,7 @@
                 ?>
                 <div class=tab2>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font></br></br>
@@ -92,20 +95,22 @@
                 </div>
               </form>
             </a>
-            <?php
-            $req = "SELECT * FROM offre WHERE id=3";
-            $result = mysqli_query($conn, $req);
-            $sql = mysqli_fetch_array($result);
-            ?>
-            </br>
-            <div class=tab3>
-              <p>
-                <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
-                <font color=black><?php echo $sql['texte']; ?></font></br></br>
-                <font color=gray size=2><?php echo $sql['lien1']; ?></font><input type=submit value=A-trés-vite style=margin-left:320; />
-              </p>
-              <p><?php echo $sql['img']; ?></p>
-            </div>
+            <form method=POST action=mes-annonces.php>
+              <?php
+              $req = "SELECT * FROM offre WHERE id=3";
+              $result = mysqli_query($conn, $req);
+              $sql = mysqli_fetch_array($result);
+              ?>
+              </br>
+              <div class=tab3>
+                <p>
+                  <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
+                  <font color=black><?php echo $sql['texte']; ?></font></br></br>
+                  <font color=gray size=2><?php echo $sql['lien1']; ?></font><input type=submit value=A-trés-vite style=margin-left:320; />
+                </p>
+                <p><?php echo $sql['img']; ?></p>
+              </div>
+            </form>
             </br>
             <a href='https://www.autorecrute.com/offre-emploi-centre-auto-roady-saint-julien-en-genevois/vendeur-pieces-de-rechange-et-accessoires-automobile-h-f/94424' style='text-decoration:none;'>
               <form method=POST action=mes-annonces.php>
@@ -114,8 +119,9 @@
                 $result = mysqli_query($conn, $req);
                 $sql = mysqli_fetch_array($result);
                 ?>
-                <div class=tab1 name=id>
+                <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font> </br></br>
@@ -139,6 +145,7 @@
                 ?>
                 <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font>
@@ -164,6 +171,7 @@
                 ?>
                 <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font>
@@ -188,6 +196,7 @@
                 ?>
                 <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font>
@@ -213,6 +222,7 @@
                 ?>
                 <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font>
@@ -238,6 +248,7 @@
                 ?>
                 <div class=tab1>
                   <p>
+                    <input type='hidden' name='annonce' value='<?php echo $sql['titre1']; ?>' />
                     <font color=gray size=2><?php echo $sql['titre1']; ?></font></br>
                     <font color=red><b><?php echo $sql['titre2']; ?></b></font></br>
                     <font color=black><?php echo $sql['texte']; ?></font>
