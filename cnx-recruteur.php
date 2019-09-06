@@ -45,12 +45,13 @@ if (!$conn) {
         <?php
         $mail = $_POST['mail'];
         $passwd = $_POST['passwd'];
+        $md5=md5($passwd);
         $_SESSION['mail'] = $mail;
-        $_SESSION['passwd'] = $passwd;
+        $_SESSION['passwd'] = $md5;
 
-        if (isset($mail) && isset($passwd)) {
+        if (isset($mail) && isset($md5)) {
 
-          $result = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire2 WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
+          $result = mysqli_query($conn, "SELECT email,`password`,prenom,nom FROM formulaire2 WHERE email='" . $mail . "' and `password`='" . $md5 . "'") or die(mysqli_error($conn));
           $sql = mysqli_fetch_array($result);
           $_SESSION['prenom'] = $sql['prenom'];
           $_SESSION['nom'] = $sql['nom'];

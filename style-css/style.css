@@ -2477,3 +2477,15 @@ span input[type=submit]{
   margin-right:20px;
   margin-top: 160px;
 }
+.deconnexion{
+  background: #e6333c;
+    color: white;
+    border-radius: 2px;
+    border: 1px #e6333c solid;
+    width: 144px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 900;
+    margin-left: 138px;
+    margin-top: 0;
+}

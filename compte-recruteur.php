@@ -104,10 +104,10 @@
             </br>
             <div class='elem-form'>
                 <b>Informations sur l’administrateur du compte</b></br>
-                Titre de civilité<select type=civilite style='margin-bottom:10; margin-left:48; '>
+                Titre de civilité<select name=civilite style='margin-bottom:10; margin-left:48; '>
                     <option>Monsieur,Madame</option>
-                    <option>M.</option>
-                    <option>Mme</option>
+                    <option value='M.'>M.</option>
+                    <option value='Mme'>Mme</option>
                 </select></br>
                 *Nom<input type=text name=nom2 style='margin-bottom:10; margin-left:101;' required /></br>
                 *Prénom<input type=text name=prenom style='margin-bottom:10; margin-left:84;' required /></br>
@@ -122,7 +122,7 @@
                 Fax<input type=number maxlength=10 name=fax2 style='margin-bottom:10; margin-left:120;' /></br>
                 <span style='margin-bottom:10; margin-left:408;  background: white; height:33px;   width: 260px;'>*Obligatoire</span>
             </div>
-            <input type=submit name=btn value='CRÉER LE COMPTE' class='btn-form' />
+            <input type=submit name='btn' value='CRÉER LE COMPTE' class='btn-form' />
         </form>
 
 

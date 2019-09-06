@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <?php include('scriptes/menu.php'); ?>
+        <?php include('scriptes/cnx-menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <?php
@@ -88,7 +88,7 @@
         $requete = "UPDATE formulaire SET email='$email' , nom='$nom' , prenom='$prenom' , annee='$annee' , 
         mois='$mois' , jour='$jour' , pays='$pays' , adresse='$adresse' , ville='$ville' , 
         postal='$postal' , telephone1='$tele1' , telephone2='$tele2' , mobilite='$mobilite' , 
-        activite='$activite' , metierrecherche='$fonction' , disponiblite='$disponiblite' ";
+        activite='$activite' , metierrecherche='$fonction' , disponiblite='$disponiblite' WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
         $query = mysqli_query($conn, $requete);
         if ($nvmtp != null) {
             $update = "UPDATE formulaire SET password='md5($nvmtp)'";

@@ -22,11 +22,11 @@ if (!$conn) {
     <header>
         <?php
         $color7 = '#d7dae1';
-        include('scriptes/menu.php'); ?>
+        include('scriptes/cnx-menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <div id='sous'>
-        <div style='font-weight:100; font-size:13; margin:auto; margin-top:50;margin-left: 500px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a><a href='cnx-recruteur.php'> >Espace recruteur</a> >Compte recruteur</div>
+        <div style='font-weight:100; font-size:13; margin:auto; margin-top:50;margin-left: 500px;'><a href='autorecrute.php'>Acceuil</a><a href='cnx-recruteur.php'> >Espace recruteur</a> >Compte recruteur</div>
     </div>
     <div id='face'>
         <div id='face1'>
@@ -72,10 +72,10 @@ if (!$conn) {
              nom='$nom2' , prenom='$prenom' ,
               fonction='$fonction' ,
             email='$mail' , 
-            `password`='$mtp' , 
             telephone2='$tele' , 
             teleportable='$teleptb' ,
-             fax2='$fax2' ";
+             fax2='$fax2' 
+             WHERE nom='".$_SESSION['nom']."' and prenom='".$_SESSION['prenom']."'";
             $sqli = mysqli_query($conn, $requete);
             if (isset($myfile)) {
                 $r = "UPDATE formulaire2 SET `file`=$file";
@@ -325,17 +325,20 @@ if (!$conn) {
             </form>
         </div>
         <div id='face2'>
-            <form method='POST'>
-                <div class=icon style='margin-left: 100;'><i class='material-icons' name='button' style='cursor:pointer;'>account_circle</i>
-            </form>
-            <p style='font-size:37;margin-bottom:0px;    font-family: sans-serif;
+            <form method='POST' action='cnx-recruteur.php'>
+                <div class=icon style='margin-left: 100;'>
+                    <i class='material-icons' name='button' style='cursor:pointer;'>account_circle</i>
+
+                    <p style='font-size:37;margin-bottom:0px;    font-family: sans-serif;
                                   font-weight: 900;'><?php echo $_SESSION['prenom'] . " " . $_SESSION['nom']; ?>
 
-            </p>
-            </br><a href='cnx-recruteur.php'><input type='submit' name='button' value='Acceuil' /></a>
-            </br><a href='deconnexion-recruteur.php'><button>Deconnexion</button></a>
+                    </p>
+                    </br><a href='cnx-recruteur.php'><input type='submit' name='button' value='Acceuil' /></a>
+                </div>
+            </form>
+            </br><a href='deconnexion-recruteur.php'><button class='deconnexion'>Deconnexion</button></a>
+
         </div>
-    </div>
     </div>
     </br>
 

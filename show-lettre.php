@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <?php include('scriptes/menu.php'); ?>
+        <?php include('scriptes/cnx-menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <?php
@@ -55,7 +55,12 @@
             </p>
         </div>
         <?php
-        $req="SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'and objet='" . $_POST['objet'] . "'";
+        $rq = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' ORDER BY id DESC";
+        $sq = mysqli_query($conn, $rq);
+        $rs = mysqli_fetch_array($sq);
+        
+        
+        $req = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'and objet='" . $_POST['objet'] . "'";
         $sqli = mysqli_query($conn, $req);
         $result = mysqli_fetch_array($sqli);
 
@@ -67,29 +72,32 @@
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
     <div id=face>
+        
+        
         <form method='POST' action='update-lettre.php'>
+            <input type='hidden' name='objt' value='<?php echo $rs['objet']; ?>' />
             <div id=face1>
                 <p style='color:brown; font-size:20;'>Insérer une lettre de motivation</p>
                 <div class=lettre>
                     Objet<input type='text' name='objet' value='<?php echo $result['objet']; ?>'></br>
                     lettre de motivation</br>
-                    <textarea name='motivation' placeholder="lettre de motivation..."><?php echo $result['texte']; ?></textarea>
-                </div>
-                </br>
-                <input type=submit value='MODIFIER MA LETTRE' style='background:firebrick; color:white; font-weight:900;border: 1px solid firebrick;width: 185px;height: 45px;margin-left: 175px'>
-            </div>
-        </form>
-        <div id='face2'>
-            <div class='first'>
-                <b>Mettez vous en avant !</b>
-                <p>Soyez visible auprès des recruteurs à la recherche de futurs talents</p><button>DÉPOSEZ VOTRE CV</button>
-            </div>
-            </br>
-            <div class='second'>
-                <b>Faites partie des premiers !</b>
-                <p>Ne passez pas à côté des dernières offres qui vous correspondent</p><button>ÊTRE ALERTÉ PAR MAIL</button>
-            </div>
+                    <textarea name='motivation' placeholder=" lettre de motivation..."><?php echo $result['texte']; ?></textarea>
+    </div>
+    </br>
+    <input type=submit value='MODIFIER MA LETTRE' style='background:firebrick; color:white; font-weight:900;border: 1px solid firebrick;width: 185px;height: 45px;margin-left: 175px'>
+    </div>
+    </form>
+    <div id='face2'>
+        <div class='first'>
+            <b>Mettez vous en avant !</b>
+            <p>Soyez visible auprès des recruteurs à la recherche de futurs talents</p><button>DÉPOSEZ VOTRE CV</button>
         </div>
+        </br>
+        <div class='second'>
+            <b>Faites partie des premiers !</b>
+            <p>Ne passez pas à côté des dernières offres qui vous correspondent</p><button>ÊTRE ALERTÉ PAR MAIL</button>
+        </div>
+    </div>
     </div>
     </br>
     <?php include('scriptes/footer.php'); ?>

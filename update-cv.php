@@ -13,7 +13,7 @@ session_start();
 <body>
 
     <header>
-        <?php include('scriptes/menu.php'); ?>
+        <?php include('scriptes/cnx-menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <?php
@@ -59,8 +59,6 @@ session_start();
         <div style='font-weight:100; font-size:13; margin:auto;margin-left: 435px;'><a href='http://localhost/autorecrute/autorecrute.php'>Acceuil</a> ><a href=mon-compte.php>Mon compte</a>>Insertion cv</div>
     </div>
     <?php
-    var_dump($_POST['title']);   
-    echo   "ttt". $_POST['title'];
     
     $query = "SELECT * FROM cv WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and titre='".$_POST['title']."'";
     $sqll = mysqli_query($conn, $query);

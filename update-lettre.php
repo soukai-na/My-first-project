@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <?php include('scriptes/menu.php'); ?>
+        <?php include('scriptes/cnx-menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <?php
@@ -55,16 +55,15 @@
             </p>
         </div>
         <?php
-        $objet=$_POST['objet'];
-        $motivation=$_POST['motivation'];
-        $req="UPDATE lettre SET objet='$objet',texte='$motivation'";
+        $objet = $_POST['objet'];
+        $motivation = $_POST['motivation'];
+        $req = "UPDATE lettre SET objet='$objet',texte='$motivation' WHERE objet='" . $_POST['objt'] . "' and prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
         $sqli = mysqli_query($conn, $req);
         $result = mysqli_fetch_array($sqli);
-        $requete="SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "'";
-        $sql= mysqli_query($conn, $requete);
-        $resultat = mysqli_fetch_array($sql)
-
-
+        $requete = "SELECT * FROM lettre WHERE prenom='" . $_SESSION['prenom'] . "' and nom='" . $_SESSION['nom'] . "' and objet='" . $_POST['objet'] . "'";
+        $sql = mysqli_query($conn, $requete);
+        $resultat = mysqli_fetch_array($sql);
+        var_dump($resultat['objet']);
         ?>
     </div>
     </div>
@@ -77,6 +76,7 @@
                 <p style='color:brown; font-size:20;'>Insérer une lettre de motivation</p>
                 <div class=lettre>
                     Objet<input type='text' name='objet' value='<?php echo $resultat['objet']; ?>'></br>
+
                     lettre de motivation</br>
                     <textarea name='motivation' placeholder="lettre de motivation..."><?php echo $resultat['texte']; ?></textarea>
                 </div>

@@ -275,7 +275,8 @@
           } else if ($_POST['connecter']) {
             $href = 'http://localhost/autorecrute/emploi-et-stage.php';
             include('scriptes/cnx.php');
-          } else {
+          }
+           else {
             include('scriptes/compte.php');
           }
           $_SESSION['connecter'] = $_POST['connecter'];
