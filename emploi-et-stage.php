@@ -47,7 +47,7 @@
             <font size=3>
               <div style=margin:12; id=neuf>Cliquez sur l'offre pour accéder au détail</div>
             </font>
-            <a href='https://www.autorecrute.com/offre-emploi-centre-auto-roady-merignac/mecanicien-automobile-operations-rapides-h-f/94363' style='text-decoration:none;'>
+            <a href='Mécanicien-Automobile-opérations-rapides.php' style='text-decoration:none;'>
               <form method='POST' action='mes-annonces.php'>
                 <?php
                 $req = "SELECT * FROM offre WHERE id=1";

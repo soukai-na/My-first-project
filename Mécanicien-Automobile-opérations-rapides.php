@@ -118,19 +118,22 @@
 
                 Permis B indispensable.
             </p>
+            <?php if(isset($_SESSION['nom']) && isset($_SESSION['prenom'])) { ?>
             <div class='postuler'>
                 <form method='POST' action='mes-candidatures.php'>
                     <b style='color: #bc1e46;font-size: 15px;'>Postulez dès maintenant !</b>
                     </br>
-                    Déposer votre CV*<input type='text' name='postuler-cv'>
+                    Déposer votre CV*<input type='text' name='postulercv' required>
                     </br>
-                    Lettre de motivation<input type='text' name='postuler-lettre' style='margin-left:35px;'>
+                    Lettre de motivation<input type='text' name='postulerlettre' style='margin-left:35px;' required>
                     </br>
                     <input type='submit' name='envoyer' value='ENVOYER MA CANDIDATEUR'>
                 </form>
             </div>
-            <p>Les autres offres d'emploi Mécanicien automobile</p>
-            </br>
+            <?php 
+            }
+            ?>
+            
             <?php echo $sql['texte']; ?>
             <?php
             $req = "SELECT * FROM annonce";

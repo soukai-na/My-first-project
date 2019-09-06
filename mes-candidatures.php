@@ -34,7 +34,7 @@
         }
         $mail = $_POST['email'];
         $passwd = $_POST['password'];
-        
+
         $resultt = mysqli_query($conn, "SELECT email,password,prenom,nom FROM formulaire WHERE email='" . $mail . "' and password='" . $passwd . "'") or die(mysqli_error($conn));
         $sqll = mysqli_fetch_array($result);
 
@@ -70,7 +70,13 @@
                 <a href=mes-candidatures.php><button id=b1>Mes candidatures</button></a>
                 <a href=donnees-perso.php><button id=b4>Données perso</button></a>
             </div>
-
+            <?php
+            //creer une table contient les noms des entreprisesee et ses annonces;
+            $postulercv = $_POST['postulercv'];
+            $postulerlettre = $_POST['postulerlettre'];
+            //condition:si le cv existe dans la bd cv;
+            $rq = "INSERT INTO candidatures(id,cv,lettre,intitule,entreprise,`date`) VALUES (null,'$postulercv','$postulerlettre','','','')";
+            ?>
             <p style='display:flex;'>
                 <b>Intitulé de l’annonce</b>
                 <b style='margin-left:85px;'>Entreprise</b>
