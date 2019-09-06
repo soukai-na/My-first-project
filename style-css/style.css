@@ -2491,3 +2491,22 @@ span input[type=submit]{
     margin-left: 138px;
     margin-top: 0;
 }
+.postuler{
+  border:1px solid black;
+  padding:10;
+}
+.postuler input[type=text]{
+  margin-left: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px black solid;
+    height: 25px;
+}
+.postuler input[type=submit]{
+  background: #530000;
+    background-color: #bc1e46;
+    border: 1px #bc1e46 solid;
+    height: 45px;
+    margin-left: 263px;
+    font-weight: 900;
+}
