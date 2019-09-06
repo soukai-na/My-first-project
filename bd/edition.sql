@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 26 Août 2019 à 19:01
--- Version du serveur :  5.7.27-0ubuntu0.18.04.1
--- Version de PHP :  7.2.19-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Sep 06, 2019 at 03:49 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `autorecrute`
+-- Database: `autorecrute`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `edition`
+-- Table structure for table `edition`
 --
 
 CREATE TABLE `edition` (
@@ -35,7 +35,7 @@ CREATE TABLE `edition` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `edition`
+-- Dumping data for table `edition`
 --
 
 INSERT INTO `edition` (`id`, `titre1`, `titre2`, `texte`, `lien`) VALUES

@@ -2213,10 +2213,11 @@ footer #pied1{
   text-align: initial;
   margin-left: 18px;
   background-color: #e6333c;
-  opacity: 0.7;
+  opacity: 0.9;
   padding-left: 15px;
   padding-bottom: 20px;
   padding-right: 17px;
+  box-shadow: inset 0px 1px 7px 10px rgba(161, 65, 65, 0.19), 0px 2px 20px 15px rgba(8, 8, 8, 0.97);
 }
 .fiche span{
   color: black !important;
@@ -2465,9 +2466,10 @@ span input[type=submit]{
 #title button{
   background: white;
   border:white;
-  height: 47px;
   cursor:pointer;
   font-size:16px;
+  width: 140px;
+  height: 47px;
 }
 .tab1 form button{
   margin-right:20px;

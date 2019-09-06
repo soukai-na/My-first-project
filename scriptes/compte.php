@@ -1,3 +1,4 @@
+
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -7,7 +8,7 @@
             <font color='white' size='5' face='arial'><b>Mon compte</b></font>
             <hr>
             <input type='text' name=mail placeholder='Adresse e-mail' /></br></br>
-            <input type='password' name=passwd id=passwd placeholder='Mot de passe' /><span> <i class="material-icons" style='font-size: 17px; color: black; margin-top: -29px; margin-left: 235px; cursor:pointer;' onclick="myFunction()">visibility</i></span></br>
+            <input type='password' name=passwd id=passwd placeholder='Mot de passe' /><span> <i class="material-icons" style='font-size: 17px; color: black; margin-top: -22px; margin-left: 235px; cursor:pointer;' onclick="myFunction()">visibility</i></span></br>
             <p id=mtp onclick='mafonction()' style="cursor:pointer;">>Mot de passe oublié?</p>
             <div style='display:flex; height:50px; width:230px; margin:1; height:35px;'><input type='submit' value='Se connecter' name=connecter style='margin-right:10;height:43px;' />
                 <hr>

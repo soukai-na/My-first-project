@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 26 Août 2019 à 19:01
--- Version du serveur :  5.7.27-0ubuntu0.18.04.1
--- Version de PHP :  7.2.19-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Sep 06, 2019 at 03:50 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `autorecrute`
+-- Database: `autorecrute`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `footer`
+-- Table structure for table `footer`
 --
 
 CREATE TABLE `footer` (
@@ -33,7 +33,7 @@ CREATE TABLE `footer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `footer`
+-- Dumping data for table `footer`
 --
 
 INSERT INTO `footer` (`id`, `titre`, `lien`) VALUES
@@ -44,11 +44,11 @@ INSERT INTO `footer` (`id`, `titre`, `lien`) VALUES
 (5, 'LES OFFRES PAR MÃ‰TIER', ' <i class=material-icons style=color:#b1b1b1;width:20px;vertical-align:middle;>navigate_next</i><a href=https://www.autorecrute.com/metiers/comptable>Comptable</a></br>\r\n<i class=material-icons style=color:#b1b1b1;width:20px;vertical-align:middle;>navigate_next</i><a href=https://www.autorecrute.com/metiers/technicien-diagnostic>Technicien diagnostic</a></br>\r\n<i class=material-icons style=color:#b1b1b1;width:20px;vertical-align:middle;>navigate_next</i><a href=https://www.autorecrute.com/metiers/directeur-de-concession>Directeur de concession</a></br>\r\n<i class=material-icons style=color:#b1b1b1;width:20px;vertical-align:middle;>navigate_next</i><a href=https://www.autorecrute.com/metiers/chef-d-equipe>Chef dâ€™Ã©quipe</a>');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `footer`
+-- Indexes for table `footer`
 --
 ALTER TABLE `footer`
   ADD PRIMARY KEY (`id`);

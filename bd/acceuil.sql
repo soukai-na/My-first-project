@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 06, 2019 at 03:51 PM
+-- Generation Time: Sep 06, 2019 at 03:48 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -23,36 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Table structure for table `acceuil`
 --
 
-CREATE TABLE `menu` (
+CREATE TABLE `acceuil` (
   `id` int(11) NOT NULL,
-  `logo` varchar(255) NOT NULL,
-  `titre1` varchar(255) NOT NULL,
-  `titre2` varchar(255) NOT NULL,
-  `titre3` varchar(255) NOT NULL,
-  `titre4` varchar(255) NOT NULL,
-  `titre5` varchar(255) NOT NULL,
-  `titre6` varchar(255) NOT NULL,
-  `titre7` varchar(255) NOT NULL
+  `texte` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `acceuil`
 --
 
-INSERT INTO `menu` (`id`, `logo`, `titre1`, `titre2`, `titre3`, `titre4`, `titre5`, `titre6`, `titre7`) VALUES
-(1, '<img src=images/auto.png alt=Autorecrute style=margin-right:30;/>', 'Emploi et stage', 'MÃ©tiers', 'Ils recrutent', 'Cabinet Conseil', 'Salons', 'ActualitÃ©', 'Recruteurs');
+INSERT INTO `acceuil` (`id`, `texte`) VALUES
+(1, '<p>SALON DE Lâ€™EMPLOI</p>\n            <hr>\n            <h1>AUTOMOBILE</h1>\n            <h5><i>Le seul forum de recrutement 100% automobile</i></h5>');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `menu`
+-- Indexes for table `acceuil`
 --
-ALTER TABLE `menu`
+ALTER TABLE `acceuil`
   ADD PRIMARY KEY (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

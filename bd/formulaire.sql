@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 26 Août 2019 à 19:01
--- Version du serveur :  5.7.27-0ubuntu0.18.04.1
--- Version de PHP :  7.2.19-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Sep 06, 2019 at 03:50 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `autorecrute`
+-- Database: `autorecrute`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `formulaire`
+-- Table structure for table `formulaire`
 --
 
 CREATE TABLE `formulaire` (
@@ -49,31 +49,32 @@ CREATE TABLE `formulaire` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `formulaire`
+-- Dumping data for table `formulaire`
 --
 
 INSERT INTO `formulaire` (`id`, `email`, `password`, `nom`, `prenom`, `annee`, `mois`, `jour`, `pays`, `adresse`, `ville`, `postal`, `telephone1`, `telephone2`, `mobilite`, `activite`, `metieractuel`, `metierrecherche`, `disponiblite`) VALUES
-(11, 'bendaouds62@gmail.com', '0650879758souka', 'bendaoud', 'soukaina', 2000, 7, 23, 'France', 'Anassi 35', 'Casa', '452654', '0650879758', '0618587093', 'Nationale', 'Etudiant', 'Choisissez un mÃ©tier', 'Animateur rÃ©seau', 'A lâ€™Ã©coute du marchÃ©');
+(21, 'cs@gmail.com', 'bc8e716925b8f052021366470a10a386', 'bd', 'sq', 2017, 7, 1, 'Angola', 'anassi', 'casablanca', '124578', '645454545', '0645454545', 'Nationale', 'EmployÃ© ou ouvrier', 'Assistant Homologation', 'Assistant Homologation', 'En recherche dâ€™activitÃ©'),
+(24, 'bendaouds62@gmail.com', '8be6ab241b6fdc8c6f9c02048afa4c5b', 'Bendaoud', 'Soukaina', 1989, 7, 7, 'Angola', 'anassi', 'casablanca', '124578', '645454545', '0645454545', 'Nationale', 'EmployÃ© ou ouvrier', 'Chef dâ€™unitÃ© mÃ©canique', 'Chef dâ€™equipe logistique', 'En recherche dâ€™activitÃ©');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `formulaire`
+-- Indexes for table `formulaire`
 --
 ALTER TABLE `formulaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `formulaire`
+-- AUTO_INCREMENT for table `formulaire`
 --
 ALTER TABLE `formulaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

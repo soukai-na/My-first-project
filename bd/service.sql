@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 26 Août 2019 à 19:02
--- Version du serveur :  5.7.27-0ubuntu0.18.04.1
--- Version de PHP :  7.2.19-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Sep 06, 2019 at 03:51 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `autorecrute`
+-- Database: `autorecrute`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `service`
+-- Table structure for table `service`
 --
 
 CREATE TABLE `service` (
@@ -34,7 +34,7 @@ CREATE TABLE `service` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `service`
+-- Dumping data for table `service`
 --
 
 INSERT INTO `service` (`id`, `titre`, `texte1`, `texte2`) VALUES
@@ -42,11 +42,11 @@ INSERT INTO `service` (`id`, `titre`, `texte1`, `texte2`) VALUES
 (2, 'Lâ€™actualitÃ© de lâ€™emploi automobile', '<div id=N>\n<a href=http://www.autorecrute.com/actualite-recrutement/30-km-h-en-ville-une-baisse-qui-pourrait-s-etendre/1123><div id=opc>\n                                       <p>PubliÃ© il y a 1 jours</p><hr><span><b>30 km/h en ville : une baisse qui pourrait  </br>sâ€™Ã©tendre</b></span>\n</div></a>\n</div>', '<div id=actu>\n\n<a href=https://www.autorecrute.com/actualite-recrutement/a-vos-agendas-12e-salon-de-l-emploi-automobile-les-3-et-4-octobre-prochains/1124>Ã€ vos agendas : 12e Salon de lâ€™emploi automobile les 3 et 4 octobre prochains</a></br><span>PubliÃ© il y a 2 jours</span></br>\n\n<a href=https://www.autorecrute.com/actualite-recrutement/30-km-h-en-ville-une-baisse-qui-pourrait-s-etendre/1123>30 km/h en ville : une baisse qui pourrait sâ€™Ã©tendre</a></br><span>PubliÃ© il y a 21 jours</span></br>\n\n<a href=https://www.autorecrute.com/actualite-recrutement/victime-de-son-succes-la-prime-a-la-conversion-bientot-limitee/1122>Victime de son succÃ¨s, la prime Ã  la conversion bientÃ´t limitÃ©e ?</a></br><span>PubliÃ© il y a 23 jours</span>\n</div>');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `service`
+-- Indexes for table `service`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`id`);

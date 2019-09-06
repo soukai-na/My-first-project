@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 26 Août 2019 à 19:00
--- Version du serveur :  5.7.27-0ubuntu0.18.04.1
--- Version de PHP :  7.2.19-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Sep 06, 2019 at 03:49 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `autorecrute`
+-- Database: `autorecrute`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `actualite`
+-- Table structure for table `actualite`
 --
 
 CREATE TABLE `actualite` (
@@ -34,7 +34,7 @@ CREATE TABLE `actualite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `actualite`
+-- Dumping data for table `actualite`
 --
 
 INSERT INTO `actualite` (`id`, `titre`, `texte`, `lien`) VALUES
@@ -43,11 +43,11 @@ INSERT INTO `actualite` (`id`, `titre`, `texte`, `lien`) VALUES
 (3, 'Les dossiers', '          <div class=pub1>\r\n            <font color=red><b>Les erreurs Ã  Ã©viter en entretien</b></font></br>\r\n            Autorecrute publiÃ© le 19/02/14</br>\r\n            <img src=\'images/fond billet.jpg\' />\r\n            <b>Lâ€™imprÃ©paration fatale </b>\r\n            </br>\r\n            Lâ€™entretien est un exercice qui nÃ©cessite de minimiser les risques dâ€™improvisation le jour J. Il faut sâ€™entraÃ®ner en amont, en potassant votre CV et en prÃ©parant les rÃ©ponses...</br>\r\n            <h5>Lire la suite</h5>\r\n          </div>\r\n          </br>\r\n          <div class=pub1>\r\n            <font color=red><b>Tout savoir pour bien se vendre auprÃ¨s des employeurs</b></b></font></br>\r\n            Autorecrute publiÃ© le 12/02/14</br>\r\n            <img src=\'images/fond billet.jpg\' />\r\n            <b>Sur la forme, un comportement et une allure irrÃ©prochables </b>\r\n            </br>\r\n            La premiÃ¨re impression est essentielle et peut mÃªme sâ€™avÃ©rer dÃ©cisive. Lors dâ€™un salon, les recruteurs enchaÃ®nent les rendez-vous. Une...</br>\r\n            <h5>Lire la suite</h5>\r\n          </div>\r\n          </br>\r\n          <div class=pub1>\r\n            <font color=red><b>5 conseils pour prÃ©parer sa visite Ã  un salon de lâ€™emploi</b></font></br>\r\n            Autorecrute publiÃ© le 29/01/14</br>\r\n            <img src=\'images/fond billet.jpg\' />\r\n            <b> 1. EquipÃ© et en tenue de combat</b>\r\n            </br>\r\n            Il existe plÃ©thore de salons, tantÃ´t multisectoriels, tantÃ´t spÃ©cialisÃ©s. Avant de se rendre Ã  lâ€™une de ces manifestations, il est important de bien se prÃ©parer...</br>\r\n            <h5>Lire la suite</h5>\r\n          </div>\r\n          </br>\r\n          <div class=pub2>\r\n            <font color=red><b>Quelles opportunitÃ©s pour les IngÃ©nieurs automobiles ?</b></font></br>\r\n            publiÃ© le 29/04/08</br>\r\n            <div style=width:18;><img src=\'images/fondbillet.jpg\' /></div><b>Quelles opportunitÃ©s pour les IngÃ©nieurs automobiles ? Sur la ligne de dÃ©part </b>\r\n\r\n            </br>\r\n            <h5>Lire la suite</h5>\r\n          </div>\r\n          </br>', '>Toutes les dossiers');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `actualite`
+-- Indexes for table `actualite`
 --
 ALTER TABLE `actualite`
   ADD PRIMARY KEY (`id`);

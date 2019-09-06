@@ -22,7 +22,7 @@ if (!$conn) {
     <header>
         <?php
         $color7 = '#d7dae1';
-        include('scriptes/cnx-menu.php'); ?>
+        include('scriptes/menu.php'); ?>
         <?php include('scriptes/recherche.php'); ?>
     </header>
     <div id='sous'>

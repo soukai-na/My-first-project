@@ -2,10 +2,10 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Client :  localhost:3306
--- Généré le :  Lun 26 Août 2019 à 19:00
--- Version du serveur :  5.7.27-0ubuntu0.18.04.1
--- Version de PHP :  7.2.19-0ubuntu0.18.04.2
+-- Host: localhost:3306
+-- Generation Time: Sep 06, 2019 at 03:49 PM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `autorecrute`
+-- Database: `autorecrute`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `accreditation`
+-- Table structure for table `accreditation`
 --
 
 CREATE TABLE `accreditation` (
@@ -36,18 +36,18 @@ CREATE TABLE `accreditation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `accreditation`
+-- Dumping data for table `accreditation`
 --
 
 INSERT INTO `accreditation` (`id`, `titre`, `texte1`, `texte2`, `tel`, `button`) VALUES
 (1, 'AccrÃ©ditation presse', 'Flash-rp', 'PILONCHERY Soraya', 'Tel: 06 20 00 62 63', 'Contact');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `accreditation`
+-- Indexes for table `accreditation`
 --
 ALTER TABLE `accreditation`
   ADD PRIMARY KEY (`id`);

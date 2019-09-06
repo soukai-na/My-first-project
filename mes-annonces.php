@@ -24,7 +24,7 @@ if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])) {
 
     <body>
         <header>
-            <?php include('scriptes/cnx-menu.php'); ?>
+            <?php include('scriptes/menu.php'); ?>
             <?php include('scriptes/recherche.php'); ?>
         </header>
         <?php
